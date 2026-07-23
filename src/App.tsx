@@ -8,13 +8,24 @@ import {
   useState,
 } from 'react'
 import {
+  AnimatePresence,
   motion,
   useReducedMotion,
   useScroll,
   useTransform,
   type MotionValue,
 } from 'framer-motion'
-import { ArrowDownRight, ArrowUpRight } from 'lucide-react'
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  Check,
+  Copy,
+  Dribbble,
+  Instagram,
+  Linkedin,
+  Mail,
+  X,
+} from 'lucide-react'
 
 type FadeInProps = PropsWithChildren<{
   delay?: number
@@ -50,19 +61,21 @@ function FadeIn({
   )
 }
 
-function ContactButton() {
+function ContactButton({ onClick }: { onClick: () => void }) {
   return (
-    <motion.a
-      href="mailto:hello@jack.design"
+    <motion.button
+      type="button"
+      onClick={onClick}
       className="contact-button relative inline-flex shrink-0 overflow-hidden rounded-full px-6 py-3 text-[11px] font-medium uppercase tracking-[0.16em] text-white sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base"
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
+      aria-haspopup="dialog"
     >
       <span className="relative z-10 flex items-center gap-2">
         Contact me
         <ArrowUpRight size={18} strokeWidth={2} />
       </span>
-    </motion.a>
+    </motion.button>
   )
 }
 
@@ -122,10 +135,9 @@ function Magnet({
   )
 }
 
-const portrait =
-  'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png'
+const portrait = '/images/hero-avatar.png'
 
-function HeroSection() {
+function HeroSection({ onContactClick }: { onContactClick: () => void }) {
   return (
     <section className="relative flex h-screen min-h-[620px] w-screen min-w-0 max-w-[100vw] flex-col overflow-x-clip bg-[#0C0C0C] px-5 sm:px-8 md:px-10">
       <FadeIn y={-20} as="nav" className="relative z-30 flex w-full min-w-0 justify-between pt-6 text-xs font-medium uppercase tracking-wider text-[#D7E2EA] sm:text-sm md:pt-8 md:text-lg lg:text-[1.4rem]">
@@ -134,16 +146,27 @@ function HeroSection() {
           ['Price', '#services'],
           ['Projects', '#projects'],
           ['Contact', '#contact'],
-        ].map(([label, href]) => (
-          <a key={label} href={href} className="transition-opacity duration-200 hover:opacity-70">
-            {label}
-          </a>
-        ))}
+        ].map(([label, href]) =>
+          label === 'Contact' ? (
+            <button
+              key={label}
+              type="button"
+              onClick={onContactClick}
+              className="uppercase transition-opacity duration-200 hover:opacity-70"
+            >
+              {label}
+            </button>
+          ) : (
+            <a key={label} href={href} className="transition-opacity duration-200 hover:opacity-70">
+              {label}
+            </a>
+          ),
+        )}
       </FadeIn>
 
       <FadeIn delay={0.15} y={40} className="relative z-0 mt-6 w-full min-w-0 max-w-full overflow-hidden sm:mt-4 md:-mt-5">
-        <h1 className="hero-heading w-full whitespace-nowrap text-center text-[14vw] font-black uppercase leading-none tracking-tight sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw]">
-          Hi, i&apos;m jack
+        <h1 className="hero-heading w-full whitespace-nowrap text-center text-[13vw] font-black uppercase leading-none tracking-tight sm:text-[14vw] md:text-[15vw] lg:text-[16vw]">
+          Hi, i&apos;m carol
         </h1>
       </FadeIn>
 
@@ -152,7 +175,7 @@ function HeroSection() {
           <Magnet>
             <img
               src={portrait}
-              alt="Jack, 3D creator"
+              alt="Carol, product designer"
               className="block h-auto w-full select-none object-contain"
               draggable={false}
             />
@@ -162,12 +185,13 @@ function HeroSection() {
 
       <div className="relative z-20 mt-auto flex w-full min-w-0 items-end justify-between gap-3 pb-7 sm:pb-8 md:pb-10">
         <FadeIn delay={0.35} y={20}>
-          <p className="max-w-[160px] text-[clamp(.75rem,1.4vw,1.5rem)] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]">
-            A 3D creator driven by crafting striking and unforgettable projects
+          <p className="max-w-[180px] text-[clamp(.75rem,1.4vw,1.5rem)] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[260px] md:max-w-[360px]">
+            A product designer driven by transforming complex problems into clear and meaningful
+            experiences.
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <ContactButton />
+          <ContactButton onClick={onContactClick} />
         </FadeIn>
       </div>
 
@@ -287,7 +311,7 @@ const aboutDecor = [
 ]
 
 const aboutText =
-  "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!"
+  '7 years of UI/UX design experience across 20+ B2B tools, AI products, and digital platforms. I specialize in transforming complex business requirements into clear user flows, scalable design systems, and intuitive product experiences, collaborating closely with product, engineering, and AI teams to deliver impactful solutions. Key achievements include improving click-to-download conversion by 2–3x and reducing intelligent video analysis processing time by 40%.'
 
 function AnimatedCharacter({
   char,
@@ -324,7 +348,7 @@ function AnimatedText({ text }: { text: string }) {
   return (
     <p
       ref={ref}
-      className="max-w-[560px] text-center text-[clamp(1rem,2vw,1.35rem)] font-medium leading-relaxed text-[#D7E2EA]"
+      className="max-w-[760px] text-center text-[clamp(.95rem,1.7vw,1.25rem)] font-medium leading-relaxed text-[#D7E2EA]"
     >
       {Array.from(text).map((char, index) => (
         <AnimatedCharacter
@@ -339,7 +363,7 @@ function AnimatedText({ text }: { text: string }) {
   )
 }
 
-function AboutSection() {
+function AboutSection({ onContactClick }: { onContactClick: () => void }) {
   return (
     <section id="about" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0C0C0C] px-5 py-24 sm:px-8 md:px-10">
       {aboutDecor.map((item) => (
@@ -366,7 +390,7 @@ function AboutSection() {
         </div>
         <div id="contact" className="mt-16 sm:mt-20 md:mt-24">
           <FadeIn delay={0.15} y={20}>
-            <ContactButton />
+            <ContactButton onClick={onContactClick} />
           </FadeIn>
         </div>
       </div>
@@ -529,22 +553,251 @@ function ProjectsSection() {
       </div>
       <footer className="mx-auto mt-16 flex max-w-[1440px] items-end justify-between border-t border-[#D7E2EA]/25 pt-8 text-[#D7E2EA]">
         <p className="text-sm font-light uppercase tracking-widest">Available for selected projects</p>
-        <p className="text-sm font-light uppercase tracking-widest">© 2026 Jack</p>
+        <p className="text-sm font-light uppercase tracking-widest">© 2026 Carol</p>
       </footer>
     </section>
   )
 }
 
-export default function App() {
-  const wrapperStyle: CSSProperties = { overflowX: 'clip' }
+const contactLinks = [
+  {
+    label: 'Email',
+    value: '792334632@qq.com',
+    href: 'mailto:792334632@qq.com',
+    icon: Mail,
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/carol-design',
+    href: 'https://www.linkedin.com/in/carol-design',
+    icon: Linkedin,
+  },
+  {
+    label: 'Instagram',
+    value: '@carol.design',
+    href: 'https://www.instagram.com/carol.design',
+    icon: Instagram,
+  },
+  {
+    label: 'Dribbble',
+    value: 'dribbble.com/carol-design',
+    href: 'https://dribbble.com/carol-design',
+    icon: Dribbble,
+  },
+]
+
+function ContactDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+  const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyEmail = async () => {
+    const email = '792334632@qq.com'
+
+    try {
+      await navigator.clipboard.writeText(email)
+    } catch {
+      const input = document.createElement('textarea')
+      input.value = email
+      input.style.position = 'fixed'
+      input.style.opacity = '0'
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand('copy')
+      input.remove()
+    }
+
+    setCopied(true)
+    if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current)
+    copyTimeoutRef.current = setTimeout(() => setCopied(false), 2200)
+  }
+
+  useEffect(() => {
+    if (!open) return
+    const previousOverflow = document.body.style.overflow
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+    closeButtonRef.current?.focus()
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+      setCopied(false)
+    }
+  }, [open, onClose])
+
+  useEffect(
+    () => () => {
+      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current)
+    },
+    [],
+  )
 
   return (
-    <main className="min-h-screen w-screen min-w-0 max-w-[100vw] bg-[#0C0C0C]" style={wrapperStyle}>
-      <HeroSection />
-      <MarqueeSection />
-      <AboutSection />
-      <ServicesSection />
-      <ProjectsSection />
-    </main>
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="fixed inset-0 z-[100] flex justify-end"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+        >
+          <motion.button
+            type="button"
+            aria-label="Close contact drawer"
+            className="absolute inset-0 cursor-default bg-black/70 backdrop-blur-sm"
+            onClick={onClose}
+          />
+          <motion.aside
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-drawer-title"
+            className="relative flex h-full w-full max-w-[520px] flex-col overflow-y-auto border-l border-white/15 bg-[#111111] px-6 py-6 text-[#D7E2EA] shadow-[-24px_0_80px_rgba(0,0,0,.45)] sm:px-10 sm:py-8"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="flex items-center justify-between border-b border-white/15 pb-5">
+              <span className="text-xs font-medium uppercase tracking-[0.26em] text-[#D7E2EA]/55">
+                01 / Contact
+              </span>
+              <motion.button
+                ref={closeButtonRef}
+                type="button"
+                onClick={onClose}
+                aria-label="Close contact drawer"
+                className="grid h-11 w-11 place-items-center rounded-full border border-white/25 transition-colors hover:bg-white hover:text-[#0C0C0C]"
+                whileHover={{ rotate: 90 }}
+                whileTap={{ scale: 0.92 }}
+              >
+                <X size={20} />
+              </motion.button>
+            </div>
+
+            <div className="pt-12 sm:pt-16">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.24em] text-[#D7E2EA]/55">
+                Have a project in mind?
+              </p>
+              <h2
+                id="contact-drawer-title"
+                className="hero-heading text-[clamp(3.4rem,11vw,6.7rem)] font-black uppercase leading-[0.82] tracking-tight"
+              >
+                Let&apos;s
+                <br />
+                connect
+              </h2>
+              <p className="mt-8 max-w-sm text-base font-light leading-relaxed text-[#D7E2EA]/65 sm:text-lg">
+                I&apos;m always open to discussing product design, AI experiences, and meaningful
+                collaborations.
+              </p>
+            </div>
+
+            <div className="mt-12 border-t border-white/15">
+              {contactLinks.map(({ label, value, href, icon: Icon }, index) => {
+                const isEmail = label === 'Email'
+                const content = (
+                  <>
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/20 text-[#D7E2EA]/70 transition-colors group-hover:border-white group-hover:bg-white group-hover:text-[#0C0C0C]">
+                    <Icon size={19} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-[#D7E2EA]/45">
+                      {label}
+                    </span>
+                    <span className="mt-1 block truncate text-sm font-light sm:text-base">{value}</span>
+                  </span>
+                    {isEmail ? (
+                      <span className="relative shrink-0">
+                        <AnimatePresence>
+                          {copied && (
+                            <motion.span
+                              role="status"
+                              aria-live="polite"
+                              className="absolute bottom-[calc(100%+12px)] right-0 z-10 flex w-max items-center gap-2 rounded-full border border-white/20 bg-[#D7E2EA] px-3.5 py-2 text-xs font-medium tracking-wide text-[#0C0C0C] shadow-xl"
+                              initial={{ opacity: 0, y: 8, scale: 0.94 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: 5, scale: 0.96 }}
+                            >
+                              <Check size={14} strokeWidth={2.5} />
+                              Copied to clipboard
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                        <Copy
+                          size={17}
+                          className="block transition-transform group-hover:scale-110"
+                        />
+                      </span>
+                    ) : (
+                      <ArrowUpRight
+                        size={19}
+                        className="shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                      />
+                    )}
+                  </>
+                )
+
+                return isEmail ? (
+                  <motion.button
+                    key={label}
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="group relative flex w-full items-center gap-4 border-b border-white/15 py-5 text-left"
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.18 + index * 0.07 }}
+                    aria-label={`Copy email address ${value}`}
+                  >
+                    {content}
+                  </motion.button>
+                ) : (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-center gap-4 border-b border-white/15 py-5"
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.18 + index * 0.07 }}
+                  >
+                    {content}
+                  </motion.a>
+                )
+              })}
+            </div>
+
+            <div className="mt-auto flex items-center justify-between pt-10 text-[10px] font-medium uppercase tracking-[0.2em] text-[#D7E2EA]/40">
+              <span>Based in China</span>
+              <span>Available for work</span>
+            </div>
+          </motion.aside>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+export default function App() {
+  const wrapperStyle: CSSProperties = { overflowX: 'clip' }
+  const [contactOpen, setContactOpen] = useState(false)
+
+  return (
+    <>
+      <main className="min-h-screen w-screen min-w-0 max-w-[100vw] bg-[#0C0C0C]" style={wrapperStyle}>
+        <HeroSection onContactClick={() => setContactOpen(true)} />
+        <MarqueeSection />
+        <AboutSection onContactClick={() => setContactOpen(true)} />
+        <ServicesSection />
+        <ProjectsSection />
+      </main>
+      <ContactDrawer open={contactOpen} onClose={() => setContactOpen(false)} />
+    </>
   )
 }
