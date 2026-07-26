@@ -33,9 +33,6 @@ export function useMouseTracking(
   const normalizedY = useMotionValue(0)
 
   useEffect(() => {
-    const finePointerQuery = window.matchMedia(
-      '(hover: hover) and (pointer: fine)',
-    )
     let listening = false
 
     const updateTrackingState = (nextState: AvatarTrackingState) => {
@@ -106,6 +103,8 @@ export function useMouseTracking(
     }
 
     const handlePointerMove = (event: PointerEvent) => {
+      if (event.pointerType === 'touch') return
+
       pointerRef.current.x = event.clientX
       pointerRef.current.y = event.clientY
       if (frameRef.current === null) {
@@ -114,21 +113,9 @@ export function useMouseTracking(
     }
 
     const startListening = () => {
-      if (listening || disabled || !finePointerQuery.matches) return
+      if (listening || disabled) return
       window.addEventListener('pointermove', handlePointerMove, { passive: true })
       listening = true
-    }
-
-    const stopListening = () => {
-      if (listening) {
-        window.removeEventListener('pointermove', handlePointerMove)
-        listening = false
-      }
-      if (frameRef.current !== null) {
-        window.cancelAnimationFrame(frameRef.current)
-        frameRef.current = null
-      }
-      resetTracking()
     }
 
     const handlePointerOut = (event: PointerEvent) => {
@@ -139,22 +126,15 @@ export function useMouseTracking(
       if (document.visibilityState !== 'visible') resetTracking()
     }
 
-    const handleCapabilityChange = () => {
-      if (finePointerQuery.matches) startListening()
-      else stopListening()
-    }
-
     startListening()
     window.addEventListener('blur', resetTracking)
     window.addEventListener('pointerout', handlePointerOut)
     document.addEventListener('visibilitychange', handleVisibilityChange)
-    finePointerQuery.addEventListener('change', handleCapabilityChange)
 
     return () => {
       window.removeEventListener('blur', resetTracking)
       window.removeEventListener('pointerout', handlePointerOut)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
-      finePointerQuery.removeEventListener('change', handleCapabilityChange)
       if (listening) {
         window.removeEventListener('pointermove', handlePointerMove)
       }

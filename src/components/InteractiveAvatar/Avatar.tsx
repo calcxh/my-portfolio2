@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import {
   motion,
-  useReducedMotion,
   useSpring,
   useTransform,
 } from 'framer-motion'
@@ -36,32 +35,35 @@ export function InteractiveAvatar({
   className = '',
 }: InteractiveAvatarProps) {
   const avatarRef = useRef<HTMLDivElement>(null)
-  const shouldReduceMotion = useReducedMotion()
+  const preloadedImagesRef = useRef<HTMLImageElement[]>([])
   const {
     frameIndex,
     isNeutral,
     normalizedX,
     normalizedY,
-  } = useMouseTracking(avatarRef, Boolean(shouldReduceMotion))
+  } = useMouseTracking(avatarRef)
   const smoothX = useSpring(normalizedX, springConfig)
   const smoothY = useSpring(normalizedY, springConfig)
   const translateX = useTransform(smoothX, [-1, 1], [-7, 7])
   const translateY = useTransform(smoothY, [-1, 1], [-4, 5])
   const rotateY = useTransform(smoothX, [-1, 1], [-1.8, 1.8])
   const rotateX = useTransform(smoothY, [-1, 1], [1.2, -1.2])
-  const activeSrc =
-    shouldReduceMotion || isNeutral ? src : sequenceAssets[frameIndex]
+  const activeSrc = isNeutral ? src : sequenceAssets[frameIndex]
 
   useEffect(() => {
     const preloadTimer = window.setTimeout(() => {
-      sequenceAssets.forEach((assetSrc) => {
+      preloadedImagesRef.current = sequenceAssets.map((assetSrc) => {
         const image = new Image()
         image.decoding = 'async'
         image.src = assetSrc
+        return image
       })
     }, 80)
 
-    return () => window.clearTimeout(preloadTimer)
+    return () => {
+      window.clearTimeout(preloadTimer)
+      preloadedImagesRef.current = []
+    }
   }, [])
 
   return (
