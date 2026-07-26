@@ -1,0 +1,75 @@
+.interactive-avatar {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+  perspective: 900px;
+  touch-action: pan-y;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.interactive-avatar__float,
+.interactive-avatar__sway {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.interactive-avatar__sway {
+  transform-origin: 50% 18%;
+}
+
+.interactive-avatar__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 24px 35px rgb(0 0 0 / 28%));
+}
+
+.interactive-avatar__eyes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.interactive-avatar__eyes img {
+  position: absolute;
+  display: block;
+  height: auto;
+  user-select: none;
+  will-change: transform;
+}
+
+.interactive-avatar__smile {
+  position: absolute;
+  top: 13.2%;
+  left: 34%;
+  width: 32%;
+  height: 8%;
+  pointer-events: none;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 19% 56%, rgb(255 144 155 / 65%) 0 8%, transparent 34%),
+    radial-gradient(circle at 81% 56%, rgb(255 144 155 / 65%) 0 8%, transparent 34%);
+  filter: blur(2.5px);
+  mix-blend-mode: screen;
+  transform-origin: center;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .interactive-avatar {
+    transform-style: flat;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-avatar,
+  .interactive-avatar__float,
+  .interactive-avatar__sway,
+  .interactive-avatar__eyes img {
+    will-change: auto;
+  }
+}
