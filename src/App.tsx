@@ -172,7 +172,7 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
         </h1>
       </FadeIn>
 
-      <div className="pointer-events-auto absolute bottom-[7rem] left-1/2 z-10 w-[min(50vw,180px)] -translate-x-1/2 sm:bottom-0 sm:w-[min(30vw,220px)] md:left-auto md:right-[clamp(8rem,18vw,18rem)] md:w-[min(20vh,260px)] md:translate-x-0 lg:right-[clamp(12rem,18vw,20rem)]">
+      <div className="pointer-events-auto absolute bottom-[7rem] left-1/2 z-10 w-[min(50vw,180px)] -translate-x-1/2 sm:bottom-0 sm:w-[min(38vw,340px)] md:w-[min(32vw,420px)] lg:w-[min(30vw,420px)]">
         <FadeIn delay={0.6} y={30}>
           <InteractiveAvatar />
         </FadeIn>
@@ -441,18 +441,18 @@ function ServicesSection() {
           {language === 'en' ? 'Capabilities' : '专业能力'}
         </h2>
       </FadeIn>
-      <div className="mx-auto max-w-5xl border-t border-black/15">
+      <div className="mx-auto grid max-w-[1400px] gap-px border border-black/15 bg-black/15 md:grid-cols-2">
         {services.map((service, index) => (
-          <FadeIn key={service.name} delay={index * 0.1}>
-            <article className="grid grid-cols-[80px_1fr] gap-4 border-b border-black/15 py-8 sm:grid-cols-[150px_1fr] sm:gap-7 sm:py-10 md:grid-cols-[220px_1fr] md:py-12">
-              <span className="text-[clamp(3rem,10vw,140px)] font-black leading-[0.82] tracking-tight text-[#0C0C0C]">
+          <FadeIn key={service.name} delay={index * 0.1} className="h-full bg-white">
+            <article className="grid h-full grid-cols-[64px_1fr] gap-4 p-6 sm:grid-cols-[88px_1fr] sm:gap-6 sm:p-8 lg:p-10">
+              <span className="text-[clamp(2.5rem,5vw,5rem)] font-black leading-[0.82] tracking-tight text-[#0C0C0C]/25">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <div className="pt-1 sm:pt-2">
-                <h3 className="text-[clamp(1rem,2.2vw,2.1rem)] font-medium uppercase leading-none text-[#0C0C0C]">
+              <div className="pt-1">
+                <h3 className="text-[clamp(1rem,1.8vw,1.7rem)] font-medium uppercase leading-tight text-[#0C0C0C]">
                   {language === 'en' ? service.name : service.nameZh}
                 </h3>
-                <p className="mt-4 max-w-2xl text-[clamp(.85rem,1.6vw,1.25rem)] font-light leading-relaxed text-[#0C0C0C]/60 sm:mt-5">
+                <p className="mt-4 max-w-2xl text-[clamp(.82rem,1.2vw,1.05rem)] font-light leading-relaxed text-[#0C0C0C]/60">
                   {language === 'en' ? service.description : service.descriptionZh}
                 </p>
               </div>
@@ -469,6 +469,7 @@ const projects = [
     name: 'Aero.ai Course Authoring System',
     nameZh: 'Aero.ai 课程创作系统',
     slug: 'nextlevel-studio',
+    year: '2025',
     category: 'Client',
     categoryZh: '客户项目',
     images: [
@@ -481,6 +482,7 @@ const projects = [
     name: 'Aura Brand Identity',
     nameZh: 'Aura 品牌视觉系统',
     slug: 'aura-brand-identity',
+    year: '2024',
     category: 'Personal',
     categoryZh: '个人项目',
     images: [
@@ -493,6 +495,7 @@ const projects = [
     name: 'Solaris Digital',
     nameZh: 'Solaris 数字产品',
     slug: 'solaris-digital',
+    year: '2024',
     category: 'Client',
     categoryZh: '客户项目',
     images: [
@@ -521,14 +524,16 @@ function ProjectCard({
       transition={{ duration: 0.7, delay: (index % 2) * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <div className="mb-4 flex min-h-[88px] items-center gap-3 px-1 sm:mb-5 sm:min-h-[100px] sm:gap-4">
-          <span className="shrink-0 text-[clamp(3.2rem,6vw,5.5rem)] font-black leading-[0.78] tracking-tight">
+          <span className="shrink-0 text-[clamp(2rem,3.5vw,3.4rem)] font-black leading-none tracking-tight text-[#D7E2EA]/25">
             {String(index + 1).padStart(2, '0')}
           </span>
           <div className="min-w-0 flex-1">
-            <span className="block text-[10px] font-light uppercase tracking-[0.2em] opacity-60 sm:text-xs">
-              {language === 'en' ? project.category : project.categoryZh}
+            <span className="flex items-center gap-3 text-[10px] font-light uppercase tracking-[0.2em] opacity-60 sm:text-xs">
+              <span>{language === 'en' ? project.category : project.categoryZh}</span>
+              <span aria-hidden="true">/</span>
+              <span>{project.year}</span>
             </span>
-            <h3 className="mt-2 text-[clamp(1rem,1.65vw,1.5rem)] font-medium uppercase leading-none">
+            <h3 className="mt-2 text-[clamp(1.25rem,2.1vw,2rem)] font-semibold uppercase leading-[1.05]">
               {projectName}
             </h3>
           </div>
@@ -537,41 +542,47 @@ function ProjectCard({
           </div>
       </div>
 
-      {project.slug === 'nextlevel-studio' ? (
-        <div className="aspect-[4/3] overflow-hidden rounded-[22px] sm:rounded-[28px] lg:rounded-[34px]">
-          <img
-            src={aeroCourseCover}
-            alt="Aero.ai Course Authoring System cover"
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          />
-        </div>
-      ) : (
-        <div className="grid aspect-[4/3] grid-rows-[2fr_1fr] gap-2 sm:gap-3">
-          <div className="overflow-hidden rounded-[22px] sm:rounded-[28px] lg:rounded-[34px]">
+      <a
+        href={`#/case-study/${project.slug}`}
+        className="block rounded-[22px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA] sm:rounded-[28px] lg:rounded-[34px]"
+        aria-label={`${language === 'en' ? 'View case study' : '查看案例'}: ${projectName}`}
+      >
+        {project.slug === 'nextlevel-studio' ? (
+          <div className="aspect-[4/3] overflow-hidden rounded-[22px] sm:rounded-[28px] lg:rounded-[34px]">
             <img
-              src={project.images[2]}
-              alt={`${project.name} main project view`}
+              src={aeroCourseCover}
+              alt="Aero.ai Course Authoring System cover"
               loading="lazy"
               className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             />
           </div>
-          <div className="grid grid-cols-2 gap-2 sm:gap-3">
-            <img
-              src={project.images[0]}
-              alt={`${project.name} detail one`}
-              loading="lazy"
-              className="h-full min-h-0 w-full rounded-[18px] object-cover sm:rounded-[24px] lg:rounded-[30px]"
-            />
-            <img
-              src={project.images[1]}
-              alt={`${project.name} detail two`}
-              loading="lazy"
-              className="h-full min-h-0 w-full rounded-[18px] object-cover sm:rounded-[24px] lg:rounded-[30px]"
-            />
+        ) : (
+          <div className="grid aspect-[4/3] grid-rows-[2fr_1fr] gap-2 sm:gap-3">
+            <div className="overflow-hidden rounded-[22px] sm:rounded-[28px] lg:rounded-[34px]">
+              <img
+                src={project.images[2]}
+                alt={`${project.name} main project view`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
+              <img
+                src={project.images[0]}
+                alt={`${project.name} detail one`}
+                loading="lazy"
+                className="h-full min-h-0 w-full rounded-[18px] object-cover sm:rounded-[24px] lg:rounded-[30px]"
+              />
+              <img
+                src={project.images[1]}
+                alt={`${project.name} detail two`}
+                loading="lazy"
+                className="h-full min-h-0 w-full rounded-[18px] object-cover sm:rounded-[24px] lg:rounded-[30px]"
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </a>
 
       <div className="mt-4 xl:hidden">
         <CaseStudyButton slug={project.slug} />
