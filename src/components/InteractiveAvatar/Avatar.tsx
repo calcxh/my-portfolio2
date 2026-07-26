@@ -14,12 +14,14 @@ export type InteractiveAvatarProps = {
   className?: string
 }
 
-const avatarAssetVersion = '20260726-cheek-arrow-fix'
+const avatarAssetVersion = '20260726-pages-path-fix'
+const avatarAssetRoot = `${import.meta.env.BASE_URL}avatar/sequence`
+const avatarAsset = (fileName: string) =>
+  `${avatarAssetRoot}/${fileName}?v=${avatarAssetVersion}`
 
 const sequenceAssets = Array.from(
   { length: 60 },
-  (_, index) =>
-    `/avatar/sequence/frame-${String(index).padStart(2, '0')}.webp?v=${avatarAssetVersion}`,
+  (_, index) => avatarAsset(`frame-${String(index).padStart(2, '0')}.webp`),
 )
 
 const springConfig = {
@@ -29,7 +31,7 @@ const springConfig = {
 }
 
 export function InteractiveAvatar({
-  src = `/avatar/sequence/neutral.webp?v=${avatarAssetVersion}`,
+  src = avatarAsset('neutral.webp'),
   alt = 'Carol, AI product designer',
   className = '',
 }: InteractiveAvatarProps) {
