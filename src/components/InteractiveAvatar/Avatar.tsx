@@ -14,7 +14,7 @@ export type InteractiveAvatarProps = {
   className?: string
 }
 
-const avatarAssetVersion = '20260726-face-hair-fix'
+const avatarAssetVersion = '20260726-cheek-arrow-fix'
 
 const sequenceAssets = Array.from(
   { length: 60 },

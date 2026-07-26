@@ -17,7 +17,6 @@ import {
   type MotionValue,
 } from 'framer-motion'
 import {
-  ArrowDownRight,
   ArrowLeft,
   ArrowUpRight,
   Check,
@@ -191,11 +190,6 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
         </FadeIn>
       </div>
 
-      <ArrowDownRight
-        aria-hidden="true"
-        className="absolute bottom-5 left-1/2 z-20 hidden -translate-x-1/2 text-[#D7E2EA]/60 md:block"
-        size={28}
-      />
     </section>
   )
 }
