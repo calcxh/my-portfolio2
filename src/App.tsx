@@ -18,6 +18,7 @@ import {
 } from 'framer-motion'
 import {
   ArrowLeft,
+  ArrowUp,
   ArrowUpRight,
   Check,
   Copy,
@@ -28,9 +29,96 @@ import {
   X,
 } from 'lucide-react'
 import InteractiveAvatar from './components/InteractiveAvatar/Avatar'
-import researchAiToolComparison from './assets/research-ai-tool-comparison.png'
-import aeroCourseCover from './assets/aero-course-cover.jpg'
-import guidedCreationFlow from './assets/guided-creation-flow.jpg'
+import researchAiToolComparison640 from './assets/research-ai-tool-comparison-640.webp'
+import researchAiToolComparison1223 from './assets/research-ai-tool-comparison-1223.webp'
+import aeroCourseCover640 from './assets/aero-course-cover-640.webp'
+import aeroCourseCover1280 from './assets/aero-course-cover-1280.webp'
+import aeroCourseCover1920 from './assets/aero-course-cover-1920.webp'
+import guidedCreationFlow768 from './assets/guided-creation-flow-768.webp'
+import guidedCreationFlow1280 from './assets/guided-creation-flow-1280.webp'
+import guidedCreationFlow1920 from './assets/guided-creation-flow-1920.webp'
+import guidedCreationFlow2560 from './assets/guided-creation-flow-2560.webp'
+import makingAiProcessesTransparent768 from './assets/making-ai-processes-transparent-768.webp'
+import makingAiProcessesTransparent1280 from './assets/making-ai-processes-transparent-1280.webp'
+import makingAiProcessesTransparent1920 from './assets/making-ai-processes-transparent-1920.webp'
+import makingAiProcessesTransparent2560 from './assets/making-ai-processes-transparent-2560.webp'
+import editableAiGeneratedCourseStructure768 from './assets/editable-ai-generated-course-structure-768.webp'
+import editableAiGeneratedCourseStructure1280 from './assets/editable-ai-generated-course-structure-1280.webp'
+import editableAiGeneratedCourseStructure1920 from './assets/editable-ai-generated-course-structure-1920.webp'
+import editableAiGeneratedCourseStructure2560 from './assets/editable-ai-generated-course-structure-2560.webp'
+import aeroOtherKeyScreens768 from './assets/aero-other-key-screens-768.webp'
+import aeroOtherKeyScreens1280 from './assets/aero-other-key-screens-1280.webp'
+import aeroOtherKeyScreens1920 from './assets/aero-other-key-screens-1920.webp'
+import collaborativeOutlineViewZh768 from './assets/collaborative-outline-view-zh-768.webp'
+import collaborativeOutlineViewZh1280 from './assets/collaborative-outline-view-zh-1280.webp'
+import collaborativeOutlineViewZh1920 from './assets/collaborative-outline-view-zh-1920.webp'
+import collaborativeOutlineViewEn768 from './assets/collaborative-outline-view-en-768.webp'
+import collaborativeOutlineViewEn1280 from './assets/collaborative-outline-view-en-1280.webp'
+import collaborativeOutlineViewEn1920 from './assets/collaborative-outline-view-en-1920.webp'
+import conversationalTargetedEditingZh768 from './assets/conversational-targeted-editing-zh-768.webp'
+import conversationalTargetedEditingZh1280 from './assets/conversational-targeted-editing-zh-1280.webp'
+import conversationalTargetedEditingZh1920 from './assets/conversational-targeted-editing-zh-1920.webp'
+import conversationalTargetedEditingEn768 from './assets/conversational-targeted-editing-en-768.webp'
+import conversationalTargetedEditingEn1280 from './assets/conversational-targeted-editing-en-1280.webp'
+import conversationalTargetedEditingEn1920 from './assets/conversational-targeted-editing-en-1920.webp'
+import courseExportFormatsZh768 from './assets/course-export-formats-zh-768.webp'
+import courseExportFormatsZh1280 from './assets/course-export-formats-zh-1280.webp'
+import courseExportFormatsZh1920 from './assets/course-export-formats-zh-1920.webp'
+import courseExportFormatsEn768 from './assets/course-export-formats-en-768.webp'
+import courseExportFormatsEn1280 from './assets/course-export-formats-en-1280.webp'
+import courseExportFormatsEn1920 from './assets/course-export-formats-en-1920.webp'
+import aeroDesignSystem768 from './assets/aero-design-system-768.webp'
+import aeroDesignSystem1280 from './assets/aero-design-system-1280.webp'
+import aeroDesignSystem1920 from './assets/aero-design-system-1920.webp'
+import miaofanComicTranslationCover from './assets/miaofan-comic-translation-platform-cover.jpg'
+import miaofanProjectOverview from './assets/miaofan-project-overview.jpg'
+import miaofanProjectOverviewZh from './assets/miaofan-project-overview-zh.jpg'
+import miaofanWorkflowRedesign from './assets/miaofan-workflow-redesign.jpg'
+import miaofanWorkflowRedesignZh from './assets/miaofan-workflow-redesign-zh.jpg'
+import miaofanRoleBasedWorkspace from './assets/miaofan-role-based-workspace.jpg'
+import miaofanRoleBasedWorkspaceZh from './assets/miaofan-role-based-workspace-zh.jpg'
+import miaofanBidirectionalCanvasText from './assets/miaofan-bidirectional-canvas-text.jpg'
+import miaofanBidirectionalCanvasTextZh from './assets/miaofan-bidirectional-canvas-text-zh.jpg'
+import miaofanTerminologyMemorySystem from './assets/miaofan-terminology-memory-system.jpg'
+import miaofanTerminologyMemorySystemZh from './assets/miaofan-terminology-memory-system-zh.jpg'
+import miaofanAiAssistedHumanApproved from './assets/miaofan-ai-assisted-human-approved.jpg'
+import miaofanAiAssistedHumanApprovedZh from './assets/miaofan-ai-assisted-human-approved-zh.jpg'
+import miaofanEasyEditingExperience from './assets/miaofan-easy-editing-experience.jpg'
+import miaofanEasyEditingExperienceZh from './assets/miaofan-easy-editing-experience-zh.jpg'
+import miaofanFindIssuesTrackProgressResolve from './assets/miaofan-find-issues-track-progress-resolve.jpg'
+import miaofanComplexProgressAtAGlance from './assets/miaofan-complex-progress-at-a-glance.jpg'
+import miaofanOtherKeyScreens from './assets/miaofan-other-key-screens.jpg'
+import huanzhiMiniProgramRedesignCover from './assets/huanzhi-mini-program-redesign-cover.jpg'
+import huanzhiProjectOverview from './assets/huanzhi-project-overview.webp'
+import huanzhiBusinessNeeds1 from './assets/huanzhi-business-needs-1.webp'
+import huanzhiDesignGoalsStrategy from './assets/huanzhi-design-goals-strategy.webp'
+import huanzhiMapRedesing from './assets/huanzhi-map-redesing.webp'
+import huanzhiVehicleControl from './assets/huanzhi-vehicle-control.webp'
+import innerglowOverview42 from './assets/innerglow-overview-42.jpg'
+import innerglowOverview43 from './assets/innerglow-overview-43.jpg'
+import gpuRentalOverview44 from './assets/gpu-rental-overview-44.jpg'
+import gpuRentalOverview45 from './assets/gpu-rental-overview-45.jpg'
+import gpuRentalOverviewZh from './assets/gpu-rental-overview-zh.webp'
+import teekidsOverview46 from './assets/teekids-overview-46.jpg'
+import teekidsOverview47 from './assets/teekids-overview-47.jpg'
+import playableInteractiveAdsCover from './assets/playable-interactive-ads-cover.webp'
+import playableProjectOverviewEn from './assets/playable-project-overview-en.webp'
+import playableProjectOverviewZh from './assets/playable-project-overview-zh.webp'
+import playableProblemDiscoveryEn from './assets/playable-problem-discovery-en.webp'
+import playableProblemDiscoveryZh from './assets/playable-problem-discovery-zh.webp'
+import playableDesignDirectionEn from './assets/playable-design-direction-en.webp'
+import playableDesignDirectionZh from './assets/playable-design-direction-zh.webp'
+import playableLockScreenApplication from './assets/playable-lock-screen-application.webp'
+import playableInteractiveLockScreenLayoutEn from './assets/playable-interactive-lock-screen-layout-en.webp'
+import playableInteractiveLockScreenLayoutZh from './assets/playable-interactive-lock-screen-layout-zh.webp'
+import playableInteractiveLockScreenUseCaseEn from './assets/playable-interactive-lock-screen-use-case-en.webp'
+import playableInteractiveLockScreenUseCaseZh from './assets/playable-interactive-lock-screen-use-case-zh.webp'
+import playableApplyingInteractiveAdsEn from './assets/playable-applying-interactive-ads-en.webp'
+import playableApplyingInteractiveAdsZh from './assets/playable-applying-interactive-ads-zh.webp'
+import playableFullscreenGuidanceEn from './assets/playable-fullscreen-guidance-en.webp'
+import playableFullscreenGuidanceZh from './assets/playable-fullscreen-guidance-zh.webp'
+import playableRevenueDataLoopEn from './assets/playable-revenue-data-loop-en.webp'
+import playableRevenueDataLoopZh from './assets/playable-revenue-data-loop-zh.webp'
 
 type Language = 'en' | 'zh'
 
@@ -141,7 +229,11 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
 
   return (
     <section className="relative flex h-screen min-h-[620px] w-screen min-w-0 max-w-[100vw] flex-col overflow-x-clip bg-[#0C0C0C] px-5 sm:px-8 md:px-10">
-      <FadeIn y={-20} as="nav" className="relative z-30 flex w-full min-w-0 justify-between pt-6 text-xs font-medium uppercase tracking-wider text-[#D7E2EA] sm:text-sm md:pt-8 md:text-lg lg:text-[1.4rem]">
+      <FadeIn
+        y={-20}
+        as="nav"
+        className="fixed left-0 right-0 top-0 z-[90] flex w-full min-w-0 justify-between border-b border-white/10 bg-[#0C0C0C]/85 px-5 pb-4 pt-6 text-xs font-medium uppercase tracking-wider text-[#D7E2EA] backdrop-blur-md sm:px-8 sm:text-sm md:px-10 md:pb-5 md:pt-7 md:text-lg lg:text-[1.4rem]"
+      >
         {navItems.map(([label, href]) =>
           href === '#contact' ? (
             <button
@@ -160,13 +252,25 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
         )}
       </FadeIn>
 
-      <FadeIn delay={0.15} y={40} className="relative z-0 mt-6 w-full min-w-0 max-w-full overflow-hidden sm:mt-4 md:mt-[clamp(2rem,5vh,3.5rem)]">
+      <FadeIn delay={0.15} y={40} className="relative z-0 mt-[4.5rem] w-full min-w-0 max-w-full overflow-hidden sm:mt-20 md:mt-[5.25rem]">
         <h1 className="hero-heading w-full text-center font-black uppercase tracking-tight">
-          <span className="block text-[18vw] leading-[0.82] sm:text-[16vw]">
+          <span
+            className={
+              language === 'en'
+                ? 'block text-[18vw] leading-[0.82] sm:text-[16vw]'
+                : 'block pt-[0.12em] text-[clamp(4rem,13vw,10rem)] leading-[1.08] tracking-normal'
+            }
+          >
             {language === 'en' ? <>Hi, i&apos;m</> : '你好，我是'}
           </span>
-          <span className="mt-[0.21em] block text-[15.5vw] leading-[0.82] sm:text-[13.5vw]">
-            Carol
+          <span
+            className={
+              language === 'en'
+                ? 'mt-[0.21em] block text-[15.5vw] leading-[0.82] sm:text-[13.5vw]'
+                : 'mt-[0.18em] block text-[clamp(4.5rem,12vw,9rem)] leading-none tracking-[0.08em]'
+            }
+          >
+            {language === 'en' ? 'Carol' : '薛和'}
           </span>
         </h1>
       </FadeIn>
@@ -182,7 +286,7 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
           <p className="max-w-[180px] text-[clamp(.75rem,1.4vw,1.5rem)] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[260px] md:max-w-[360px]">
             {language === 'en'
               ? 'A product designer driven by transforming complex problems into clear and meaningful experiences.'
-              : '一名产品设计师，致力于将复杂问题转化为清晰且有意义的产品体验。'}
+              : '一名UI/UX设计师，致力于将复杂问题转化为清晰且有意义的产品体验。'}
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
@@ -464,6 +568,7 @@ const projects = [
     nameZh: 'Aero.ai 课程创作系统',
     slug: 'nextlevel-studio',
     year: '2025',
+    platform: 'web',
     category: 'Client',
     categoryZh: '客户项目',
     images: [
@@ -473,30 +578,67 @@ const projects = [
     ],
   },
   {
-    name: 'Aura Brand Identity',
-    nameZh: 'Aura 品牌视觉系统',
+    name: 'Miaofan Comic Translation Platform',
+    nameZh: '秒翻漫画翻译平台',
     slug: 'aura-brand-identity',
     year: '2024',
-    category: 'Personal',
-    categoryZh: '个人项目',
-    images: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
-    ],
+    platform: 'web',
+    category: 'Client',
+    categoryZh: '公司项目',
+    images: [miaofanComicTranslationCover],
   },
   {
-    name: 'Solaris Digital',
-    nameZh: 'Solaris 数字产品',
+    name: 'Huanzhi Mini Program Redesign',
+    nameZh: '焕智小程序改版',
     slug: 'solaris-digital',
     year: '2024',
+    platform: 'mobile',
     category: 'Client',
     categoryZh: '客户项目',
-    images: [
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-      'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
-    ],
+    images: [huanzhiMiniProgramRedesignCover],
+  },
+  {
+    name: 'Playable Interactive Ads',
+    nameZh: '试玩互动广告',
+    slug: 'project-placeholder-07',
+    year: '2022',
+    platform: 'mobile',
+    category: 'Client',
+    categoryZh: '公司项目',
+    images: [playableInteractiveAdsCover],
+  },
+  {
+    name: 'INNERGLOW website desgin',
+    nameZh: 'INNERGLOW website desgin',
+    slug: 'project-placeholder-04',
+    year: '2024',
+    platform: 'web',
+    category: 'Client',
+    categoryZh: '客户项目',
+    images: [innerglowOverview42],
+    overviewImages: [innerglowOverview42, innerglowOverview43],
+  },
+  {
+    name: 'GPU RENTAL APP',
+    nameZh: 'GPU RENTAL APP',
+    slug: 'project-placeholder-05',
+    year: '2023',
+    platform: 'mobile',
+    category: 'Client',
+    categoryZh: '公司项目',
+    images: [gpuRentalOverview44],
+    overviewImages: [gpuRentalOverview44, gpuRentalOverview45],
+  },
+  {
+    name: 'TEEKIDS website desgin',
+    nameZh: 'TEEKIDS website desgin',
+    slug: 'project-placeholder-06',
+    year: '2023',
+    platform: 'web',
+    category: 'Client',
+    categoryZh: '客户项目',
+    images: [teekidsOverview46],
+    overviewImages: [teekidsOverview46, teekidsOverview47],
   },
 ]
 
@@ -518,9 +660,6 @@ function ProjectCard({
       transition={{ duration: 0.7, delay: (index % 2) * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <div className="mb-4 flex min-h-[88px] items-center gap-3 px-1 sm:mb-5 sm:min-h-[100px] sm:gap-4">
-          <span className="shrink-0 text-[clamp(2rem,3.5vw,3.4rem)] font-black leading-none tracking-tight text-[#D7E2EA]/25">
-            {String(index + 1).padStart(2, '0')}
-          </span>
           <div className="min-w-0 flex-1">
             <span className="flex items-center gap-3 text-[10px] font-light uppercase tracking-[0.2em] opacity-60 sm:text-xs">
               <span>{language === 'en' ? project.category : project.categoryZh}</span>
@@ -541,14 +680,31 @@ function ProjectCard({
         className="block rounded-[22px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA] sm:rounded-[28px] lg:rounded-[34px]"
         aria-label={`${language === 'en' ? 'View case study' : '查看案例'}: ${projectName}`}
       >
-        {project.slug === 'nextlevel-studio' ? (
+        {project.slug === 'nextlevel-studio' || project.images.length === 1 ? (
           <div className="aspect-[4/3] overflow-hidden rounded-[22px] sm:rounded-[28px] lg:rounded-[34px]">
-            <img
-              src={aeroCourseCover}
-              alt="Aero.ai Course Authoring System cover"
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            />
+            {project.slug === 'nextlevel-studio' ? (
+              <img
+                src={aeroCourseCover1280}
+                srcSet={`${aeroCourseCover640} 640w, ${aeroCourseCover1280} 1280w, ${aeroCourseCover1920} 1920w`}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                alt="Aero.ai Course Authoring System cover"
+                loading="lazy"
+                decoding="async"
+                width={4000}
+                height={3000}
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              />
+            ) : (
+              <img
+                src={project.images[0]}
+                alt={`${project.name} cover`}
+                loading="lazy"
+                decoding="async"
+                width={3000}
+                height={2250}
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              />
+            )}
           </div>
         ) : (
           <div className="grid aspect-[4/3] grid-rows-[2fr_1fr] gap-2 sm:gap-3">
@@ -587,15 +743,46 @@ function ProjectCard({
 
 function ProjectsSection() {
   const { language } = useLanguage()
+  const [activeFilter, setActiveFilter] = useState<'all' | 'web' | 'mobile' | 'graphic'>('all')
+  const filters = [
+    { id: 'all' as const, en: 'All', zh: '全部' },
+    { id: 'web' as const, en: 'Web', zh: '网页端' },
+    { id: 'mobile' as const, en: 'Mobile', zh: '移动端' },
+    { id: 'graphic' as const, en: 'Graphic', zh: '平面设计' },
+  ]
+  const visibleProjects = projects
+    .map((project, index) => ({ project, index }))
+    .filter(({ project }) => activeFilter === 'all' || project.platform === activeFilter)
+
   return (
     <section id="projects" className="relative z-10 -mt-10 rounded-t-[40px] bg-[#0C0C0C] px-4 pb-32 pt-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-6 sm:pt-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:pt-32">
       <FadeIn>
-        <h2 className="hero-heading mb-16 text-center text-[clamp(3rem,12vw,160px)] font-black uppercase leading-none tracking-tight sm:mb-20">
+        <h2 className="hero-heading mb-8 text-center text-[clamp(3rem,12vw,160px)] font-black uppercase leading-none tracking-tight sm:mb-10">
           {language === 'en' ? 'Projects' : '项目'}
         </h2>
+        <div className="mb-14 flex flex-wrap items-center justify-center gap-2 sm:mb-16 sm:gap-3">
+          {filters.map((filter) => {
+            const isActive = activeFilter === filter.id
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                onClick={() => setActiveFilter(filter.id)}
+                aria-pressed={isActive}
+                className={`rounded-full border px-5 py-2.5 text-xs font-medium uppercase tracking-[0.16em] transition-colors duration-300 sm:px-7 sm:py-3 sm:text-sm ${
+                  isActive
+                    ? 'border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C]'
+                    : 'border-[#D7E2EA]/45 text-[#D7E2EA]/70 hover:border-[#D7E2EA] hover:text-[#D7E2EA]'
+                }`}
+              >
+                {language === 'en' ? filter.en : filter.zh}
+              </button>
+            )
+          })}
+        </div>
       </FadeIn>
       <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:gap-8">
-        {projects.map((project, index) => (
+        {visibleProjects.map(({ project, index }) => (
           <ProjectCard key={project.name} project={project} index={index} />
         ))}
       </div>
@@ -646,18 +833,229 @@ const caseStudySections = [
     label: 'Figma Design System',
     labelZh: 'Figma 设计系统',
     description:
-      'Bring the experience to life through high-fidelity states and testable interaction details.',
-    descriptionZh: '通过高保真状态与可测试的交互细节，让产品体验真实呈现。',
+      'As the interface scaled, designing page by page would erode consistency and increase handoff costs. I helped build a shared library covering the editor, AI states, forms, export flows, and templates.',
+    descriptionZh:
+      '随着项目界面规模扩大，单纯依赖页面设计会导致一致性下降和开发沟通成本上升。因此我参与建立了覆盖编辑器、AI 状态、表单、导出流程和模板系统的设计资源库。',
   },
   {
     id: 'reflection',
     label: 'Other Key Screens',
     labelZh: '其他关键页面',
-    description:
-      'Capture outcomes, lessons, and the opportunities that would shape the next iteration.',
-    descriptionZh: '总结成果、经验与机会，为下一轮迭代提供方向。',
+    description: '',
+    descriptionZh: '',
   },
 ]
+
+const miaofanCaseStudySections = caseStudySections.map((section) => {
+  if (section.id === 'background') {
+    return {
+      ...section,
+      label: 'Project Overview',
+      labelZh: '项目概览',
+      description:
+        'Comic localization is more than translating words. Teams must coordinate artwork, OCR, narrative context, terminology, visual typesetting, review, and delivery. Without a shared system, information fragments and progress becomes difficult to track.',
+      descriptionZh:
+        '漫画翻译并非是“把文字翻译成另一种语言”。真实业务中，团队需要同时处理原画图像、文字识别、前后文理解、统一术语、画面排版、校对和交付。每个环节都依赖不同角色协作，若没有统一系统，很容易出现信息割裂，进度不透明等问题。',
+    }
+  }
+
+  if (section.id === 'research') {
+    return {
+      ...section,
+      label: 'My Role',
+      labelZh: '我的角色',
+      description:
+        'I mapped the workflow and roles, designed the core editing experience, linked text with the canvas, defined AI-assisted moments, and established UI and component standards.',
+      descriptionZh:
+        '负责业务流程梳理、角色任务拆解、核心工作流设计、文本与画布联动、AI辅助位置、工作台布局、UI 视觉与组件规范',
+    }
+  }
+
+  if (section.id === 'design-challenge') {
+    return {
+      ...section,
+      label: 'Workflow Redesign',
+      labelZh: '工作流重构',
+      description:
+        'We reorganized fragmented production tasks into a workflow that teams could understand, track, and collaborate within.',
+      descriptionZh:
+        '把用户原本分散的生产动作重新组织为可理解、可追踪、可协作的工作流。',
+    }
+  }
+
+  if (section.id === 'solution') {
+    return {
+      ...section,
+      label: 'Role-Based Workspace',
+      labelZh: '角色化工作台',
+      description:
+        'Role-specific workspaces reflect each responsibility: translators ensure linguistic accuracy, typesetters shape on-page text, and reviewers make the final quality call.',
+      descriptionZh:
+        '根据角色职责设计工作台：译员负责译文准确性，排版员负责画面文字呈现，校对员负责最终质量判断。',
+    }
+  }
+
+  if (section.id === 'prototype') {
+    return {
+      ...section,
+      label: 'Bidirectional Canvas & Text Synchronization',
+      labelZh: '画布与文本双向同步',
+      description:
+        'Each role sees a different canvas layout and toolset: translators focus on copy, typesetters shape the page, and reviewers provide feedback—so everyone handles only the work relevant to them.',
+      descriptionZh:
+        '不同角色进入画布后，会有不同的布局和功能。译员看文本，排版员调画面，校对员提反馈，让每个角色只处理自己该处理的事。',
+    }
+  }
+
+  if (section.id === 'reflection') {
+    return {
+      ...section,
+      descriptionZh:
+        '依托AI解析原稿提炼统一设计规范并驱动Figma快速搭建标准化组件库，降低改版与迭代成本快速送代升级筑牢设计基建。',
+    }
+  }
+
+  return section
+})
+
+const huanzhiPlaceholderSections = miaofanCaseStudySections.map((section, sectionIndex) => {
+  const placeholderSection = {
+    ...section,
+    label: `Section Title ${String(sectionIndex + 1).padStart(2, '0')}`,
+    labelZh: `章节标题占位 ${String(sectionIndex + 1).padStart(2, '0')}`,
+    description:
+      'Placeholder body copy for the Huanzhi Mini Program Redesign case study. Replace this text with the final project narrative when the content is ready.',
+    descriptionZh:
+      '焕智小程序改版案例正文占位。待项目内容确认后，将此处替换为最终的项目叙述。',
+  }
+
+  if (section.id === 'background') {
+    return {
+      ...placeholderSection,
+      label: 'Project Overview',
+      labelZh: '项目概览',
+      description: '',
+      descriptionZh: '',
+    }
+  }
+
+  if (section.id === 'research') {
+    return {
+      ...placeholderSection,
+      label: 'My Role',
+      labelZh: '我的角色',
+    }
+  }
+
+  if (section.id === 'design-challenge') {
+    return {
+      ...placeholderSection,
+      label: 'Business Needs',
+      labelZh: '业务需求',
+      description: '',
+      descriptionZh: '',
+    }
+  }
+
+  if (section.id === 'solution') {
+    return {
+      ...placeholderSection,
+      label: 'Design Goals & Strategy',
+      labelZh: '设计目标与策略',
+      description: '',
+      descriptionZh: '',
+    }
+  }
+
+  if (section.id === 'prototype') {
+    return {
+      ...placeholderSection,
+      label: 'Map Redesing',
+      labelZh: '地图改版',
+      description: '',
+      descriptionZh: '',
+    }
+  }
+
+  return placeholderSection
+})
+
+const genericMiaofanPlaceholderSections = miaofanCaseStudySections.map((section) => ({
+  ...section,
+  description:
+    'Placeholder body copy for this case study section. Replace it with the final project narrative when the content is ready.',
+  descriptionZh: '此处为案例章节正文占位，待项目内容确认后替换为最终文案。',
+}))
+
+const playableInteractiveAdsSections = genericMiaofanPlaceholderSections.map((section) => {
+  if (section.id === 'background') {
+    return {
+      ...section,
+      description:
+        "Playable interactive ads combine cloud gaming with advertising through screen-casting technology. Designed to improve distribution efficiency and shorten advertisers' ROI payback cycle, they let users start instantly, improve the media experience, and increase retention.",
+      descriptionZh:
+        '试玩互动广告是基于投屏互动技术衍生出来的一种结合云游戏与广告全新的广告形式，主要为提升渠道分发效率，同时缩短渠道的上游广告主ROI回收周期，用户即点即用，提升媒体分发的用户体验，进而提升渠道的用户留存。',
+    }
+  }
+
+  if (section.id === 'research') {
+    return {
+      ...section,
+      label: 'Problem Discovery',
+      labelZh: '发现问题',
+      description: '',
+      descriptionZh: '',
+    }
+  }
+
+  if (section.id === 'design-challenge') {
+    return {
+      ...section,
+      label: 'Design Direction',
+      labelZh: '设计方向',
+      description:
+        'I synthesized the client\'s concern that the brand was not prominent enough with user feedback such as “the map is too small, cabinets are hard to find, and statuses are unclear,” turning them into actionable design strategies. Fragmented requirements were organized into an experience upgrade centered on the core task.',
+      descriptionZh:
+        '我将客户提出的“品牌不够突出”和用户反馈中的“地图小、找柜难、状态不清等”进行了整合，转化为可执行的设计策略。分散需求组织成一套围绕核心任务的体验升级方案。',
+    }
+  }
+
+  if (section.id === 'solution') {
+    return {
+      ...section,
+      label: 'Playable Ads Lock-Screen Application',
+      labelZh: '试玩互动广告在锁屏中的应用',
+      description:
+        'Interactive lock screens are a new format built on playable-ad technology. Users can tap a game ad on the lock screen to enter interactive mode, try or download the game without leaving the screen, supporting game promotion.',
+      descriptionZh:
+        '互动锁屏是基于试玩互动广告技术研发出的一种新型锁屏形式。手机用户可以通过点击锁屏游戏广告，进入互动模式，在当前界面上试玩或下载，达到游戏推广的目的。',
+    }
+  }
+
+  if (section.id === 'prototype') {
+    return {
+      ...section,
+      label: 'Interactive Lock-Screen Layout',
+      labelZh: '互动锁屏布局设计',
+      description: '',
+      descriptionZh: '',
+    }
+  }
+
+  if (section.id === 'reflection') {
+    return {
+      ...section,
+      label: 'Revenue&Data Loop',
+      labelZh: '商业化升级&数据回收',
+      description:
+        'Playable content attracted users to stay. Our product helped distribution partners improve delivery efficiency and lower acquisition costs.',
+      descriptionZh:
+        '以试玩为卖点吸引用户停留，渠道方通过我们的产品提升了分发效率，降低了获客成本。',
+    }
+  }
+
+  return section
+})
 
 function CaseStudyPage({
   project,
@@ -667,8 +1065,26 @@ function CaseStudyPage({
   index: number
 }) {
   const { language } = useLanguage()
-  const [activeSection, setActiveSection] = useState(caseStudySections[0].id)
+  const isMiaofanProject = project.slug === 'aura-brand-identity'
+  const isHuanzhiPlaceholder = project.slug === 'solaris-digital'
+  const isGenericPlaceholder = /^project-placeholder-0[4-6]$/.test(project.slug)
+  const isFullMiaofanPlaceholder = project.slug === 'project-placeholder-07'
+  const usesPlaceholderLayout =
+    isHuanzhiPlaceholder || isGenericPlaceholder || isFullMiaofanPlaceholder
+  const usesMiaofanLayout = isMiaofanProject || usesPlaceholderLayout
+  const sections =
+    isMiaofanProject
+      ? miaofanCaseStudySections
+      : isFullMiaofanPlaceholder
+        ? playableInteractiveAdsSections
+      : isGenericPlaceholder
+        ? huanzhiPlaceholderSections.filter(({ id }) => id === 'background' || id === 'research')
+        : usesPlaceholderLayout
+        ? huanzhiPlaceholderSections
+        : caseStudySections
+  const [activeSection, setActiveSection] = useState(sections[0].id)
   const projectName = language === 'en' ? project.name : project.nameZh
+  const overviewImages = ('overviewImages' in project ? project.overviewImages : []) ?? []
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
@@ -683,7 +1099,7 @@ function CaseStudyPage({
       { rootMargin: '-20% 0px -55% 0px', threshold: [0.05, 0.25, 0.5] },
     )
 
-    caseStudySections.forEach(({ id }) => {
+    sections.forEach(({ id }) => {
       const section = document.getElementById(id)
       if (section) observer.observe(section)
     })
@@ -712,16 +1128,26 @@ function CaseStudyPage({
 
       <section className="px-5 pb-20 pt-10 sm:px-8 md:px-12 md:pb-28 md:pt-16">
         <div className="mx-auto max-w-[1600px]">
-          <div className="flex flex-wrap items-end justify-between gap-8">
-            <div>
+          <div
+            className={
+              usesMiaofanLayout
+                ? 'flex items-end justify-between gap-6'
+                : 'flex flex-wrap items-end justify-between gap-8'
+            }
+          >
+            <div className={usesMiaofanLayout ? 'min-w-0 flex-1' : ''}>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.24em] text-[#D7E2EA]/50">
                 {language === 'en' ? `${project.category} project` : project.categoryZh}
               </p>
               <h1
-                className={`hero-heading max-w-6xl font-black uppercase leading-[0.82] tracking-tight ${
+                className={`hero-heading max-w-6xl font-black uppercase tracking-tight ${
+                  language === 'zh' ? 'pb-[0.08em] leading-[1.06]' : 'leading-[0.82]'
+                } ${
                   project.slug === 'nextlevel-studio'
                     ? 'text-[clamp(3.2rem,7vw,7.5rem)]'
-                    : 'text-[clamp(3.6rem,10vw,10rem)]'
+                    : usesMiaofanLayout
+                      ? 'text-[clamp(2.8rem,7vw,7.5rem)]'
+                      : 'text-[clamp(3.6rem,10vw,10rem)]'
                 }`}
               >
                 {project.slug === 'nextlevel-studio' ? (
@@ -734,12 +1160,12 @@ function CaseStudyPage({
                 )}
               </h1>
             </div>
-            <span className="text-[clamp(4rem,9vw,8rem)] font-black leading-none text-[#D7E2EA]/15">
+            <span className="shrink-0 text-[clamp(4rem,9vw,8rem)] font-black leading-none text-[#D7E2EA]/15">
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
 
-          {project.slug !== 'nextlevel-studio' && (
+          {project.slug !== 'nextlevel-studio' && !usesMiaofanLayout && (
             <motion.div
               className="mt-12 overflow-hidden rounded-[30px] sm:rounded-[44px] md:mt-16 md:rounded-[60px]"
               initial={{ opacity: 0, y: 40 }}
@@ -763,7 +1189,7 @@ function CaseStudyPage({
           </p>
           <nav className="relative py-2" aria-label="Case study sections">
             <span className="absolute bottom-0 left-0 top-0 w-px bg-[#D7E2EA]/20" />
-            {caseStudySections.map(({ id, label }, sectionIndex) => {
+            {sections.map(({ id, label }, sectionIndex) => {
               const active = activeSection === id
               const tickWidth = sectionIndex % 2 === 0 ? 'w-8' : 'w-5'
 
@@ -784,7 +1210,17 @@ function CaseStudyPage({
                   <span className="mr-3 text-[9px] opacity-45">
                     {String(sectionIndex + 1).padStart(2, '0')}
                   </span>
-                  {language === 'en' ? label : caseStudySections[sectionIndex].labelZh}
+                  {usesMiaofanLayout && id === 'prototype'
+                    ? isHuanzhiPlaceholder
+                      ? language === 'en'
+                        ? 'Key Design Decisions'
+                        : '关键设计决策'
+                      : language === 'en'
+                        ? 'Key Design Decisions'
+                        : '关键设计决策'
+                    : language === 'en'
+                      ? label
+                      : sections[sectionIndex].labelZh}
                 </button>
               )
             })}
@@ -794,7 +1230,7 @@ function CaseStudyPage({
         <div className="min-w-0">
           <div className="sticky top-0 z-20 -mx-5 mb-8 overflow-x-auto border-y border-[#D7E2EA]/15 bg-[#0C0C0C]/95 px-5 py-4 backdrop-blur lg:hidden">
             <div className="flex w-max gap-2">
-              {caseStudySections.map(({ id, label }) => (
+              {sections.map(({ id, label }) => (
                 <button
                   key={id}
                   type="button"
@@ -805,19 +1241,64 @@ function CaseStudyPage({
                       : 'border-[#D7E2EA]/20 text-[#D7E2EA]/50'
                   }`}
                 >
-                  {language === 'en' ? label : caseStudySections.find((item) => item.id === id)?.labelZh}
+                  {usesMiaofanLayout && id === 'prototype'
+                    ? isHuanzhiPlaceholder
+                      ? language === 'en'
+                        ? 'Key Design Decisions'
+                        : '关键设计决策'
+                      : language === 'en'
+                        ? 'Key Design Decisions'
+                        : '关键设计决策'
+                    : language === 'en'
+                      ? label
+                      : sections.find((item) => item.id === id)?.labelZh}
                 </button>
               ))}
             </div>
           </div>
 
-          {caseStudySections.map((section, sectionIndex) => {
+          {sections.map((section, sectionIndex) => {
             const primaryImage =
-              project.slug === 'nextlevel-studio' && section.id === 'solution'
-                ? guidedCreationFlow
-                : project.images[sectionIndex % project.images.length]
+              isMiaofanProject && section.id === 'background'
+                ? language === 'zh'
+                  ? miaofanProjectOverviewZh
+                  : miaofanProjectOverview
+                : isMiaofanProject && section.id === 'design-challenge'
+                  ? language === 'zh'
+                    ? miaofanWorkflowRedesignZh
+                    : miaofanWorkflowRedesign
+                  : isMiaofanProject && section.id === 'solution'
+                    ? language === 'zh'
+                      ? miaofanRoleBasedWorkspaceZh
+                      : miaofanRoleBasedWorkspace
+                    : isMiaofanProject && section.id === 'prototype'
+                      ? language === 'zh'
+                        ? miaofanBidirectionalCanvasTextZh
+                        : miaofanBidirectionalCanvasText
+                      : isMiaofanProject && section.id === 'reflection'
+                        ? miaofanOtherKeyScreens
+                : project.slug === 'nextlevel-studio' && section.id === 'solution'
+                  ? guidedCreationFlow1280
+                  : project.slug === 'nextlevel-studio' && section.id === 'prototype'
+                    ? aeroDesignSystem1280
+                  : project.slug === 'nextlevel-studio' && section.id === 'reflection'
+                    ? aeroOtherKeyScreens1280
+                    : project.images[sectionIndex % project.images.length]
             const secondaryImage = project.images[(sectionIndex + 1) % project.images.length]
-            const showPair = sectionIndex === 1 || sectionIndex === 4 || sectionIndex === 6
+            const showPair =
+              (sectionIndex === 1 || sectionIndex === 4 || sectionIndex === 6) &&
+              !(project.slug === 'nextlevel-studio' && section.id === 'prototype') &&
+              !(usesMiaofanLayout && section.id === 'prototype')
+            const isMiaofanOverview =
+              usesMiaofanLayout && section.id === 'background'
+            const isMiaofanWorkflow =
+              usesMiaofanLayout && section.id === 'design-challenge'
+            const isMiaofanRoleWorkspace =
+              usesMiaofanLayout && section.id === 'solution'
+            const isMiaofanBidirectionalCanvas =
+              usesMiaofanLayout && section.id === 'prototype'
+            const isMiaofanOtherKeyScreens =
+              usesMiaofanLayout && section.id === 'reflection'
 
             return (
               <section
@@ -825,14 +1306,38 @@ function CaseStudyPage({
                 id={section.id}
                 className="scroll-mt-24 border-t border-[#D7E2EA]/15 py-16 first:border-t-0 first:pt-0 sm:py-20 md:py-24"
               >
+                {isMiaofanBidirectionalCanvas && (
+                  <div className="mb-14 flex items-end justify-between gap-6 sm:mb-20">
+                    <h1 className="text-[clamp(2.2rem,5vw,5.2rem)] font-black uppercase leading-[0.9] tracking-tight">
+                      {usesPlaceholderLayout
+                        ? language === 'en'
+                          ? 'Key Design Decisions'
+                          : '关键设计决策'
+                        : language === 'en'
+                          ? 'Key Design Decisions'
+                          : '关键设计决策'}
+                    </h1>
+                    <span className="shrink-0 pb-1 text-xs font-medium tracking-[0.22em] text-[#D7E2EA]/35">
+                      /{String(sectionIndex + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                )}
                 <div className="relative mb-10">
-                  <span
-                    className="absolute right-0 top-1 text-right text-xs font-medium tracking-[0.22em] text-[#D7E2EA]/35"
-                  >
-                    /{String(sectionIndex + 1).padStart(2, '0')}
-                  </span>
+                  {!isMiaofanBidirectionalCanvas && (
+                    <span
+                      className="absolute right-0 top-1 text-right text-xs font-medium tracking-[0.22em] text-[#D7E2EA]/35"
+                    >
+                      /{String(sectionIndex + 1).padStart(2, '0')}
+                    </span>
+                  )}
                   <div className="pr-20">
-                    <h2 className="text-[clamp(2.2rem,5vw,5.2rem)] font-black uppercase leading-[0.9] tracking-tight">
+                    <h2
+                      className={
+                        isMiaofanBidirectionalCanvas
+                          ? 'text-[clamp(1.6rem,3vw,3.25rem)] font-bold uppercase leading-tight tracking-tight'
+                          : 'text-[clamp(2.2rem,5vw,5.2rem)] font-black uppercase leading-[0.9] tracking-tight'
+                      }
+                    >
                       {language === 'en' ? section.label : section.labelZh}
                     </h2>
                     {(language === 'en' ? section.description : section.descriptionZh) && (
@@ -906,13 +1411,138 @@ function CaseStudyPage({
                     </h2>
                     <h3 className="mt-4 text-base font-medium leading-relaxed text-[#D7E2EA]/60 sm:text-xl">
                       {language === 'en'
-                        ? 'Goal: Help Users Create Courses Efficiently'
+                        ? 'Goal: Transform users from content creators into reviewers'
                         : '目标：帮助用户高效创建课程'}
                     </h3>
                   </div>
                 )}
 
-                {project.slug === 'nextlevel-studio' && section.id === 'background' ? null : project.slug ===
+                {isFullMiaofanPlaceholder && section.id === 'research' ? (
+                  <motion.img
+                    src={
+                      language === 'en'
+                        ? playableProblemDiscoveryEn
+                        : playableProblemDiscoveryZh
+                    }
+                    alt={language === 'en' ? 'Problem discovery' : '发现问题'}
+                    loading="lazy"
+                    decoding="async"
+                    width={2000}
+                    height={1292}
+                    className="h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-80px' }}
+                    transition={{ duration: 0.65 }}
+                  />
+                ) : usesMiaofanLayout && section.id === 'research' ? (
+                  <div className="rounded-[24px] border border-[#D7E2EA]/18 bg-[#D7E2EA]/[0.035] p-6 sm:rounded-[30px] sm:p-8 md:p-10">
+                    <h3 className="text-xl font-semibold uppercase tracking-tight sm:text-2xl">
+                      {usesPlaceholderLayout
+                        ? language === 'en'
+                          ? 'Placeholder Group Title'
+                          : '分组标题占位'
+                        : language === 'en'
+                          ? 'Core Responsibilities'
+                          : '核心职责'}
+                    </h3>
+                    <div className="mt-8 grid gap-px overflow-hidden rounded-[18px] border border-[#D7E2EA]/15 bg-[#D7E2EA]/15 sm:rounded-[22px] md:grid-cols-2">
+                      {[
+                        {
+                          title:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder Card Title 01'
+                                : '卡片标题占位 01'
+                              : language === 'en'
+                              ? 'Map the End-to-End Localization Flow'
+                              : '梳理本地化完整流程',
+                          body:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder copy for this responsibility card. Replace it with the final project content.'
+                                : '此处为职责卡片正文占位，待内容确认后替换为最终项目文案。'
+                              : language === 'en'
+                              ? 'Cover the end-to-end flow from source upload and OCR to translation, typesetting, review, and final delivery.'
+                              : '覆盖原稿上传、OCR 识别、翻译、排版、校对到最终交付的端到端流程。',
+                        },
+                        {
+                          title:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder Card Title 02'
+                                : '卡片标题占位 02'
+                              : language === 'en'
+                              ? 'Design Role-Based Collaboration'
+                              : '设计多角色协作体系',
+                          body:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder copy for this responsibility card. Replace it with the final project content.'
+                                : '此处为职责卡片正文占位，待内容确认后替换为最终项目文案。'
+                              : language === 'en'
+                              ? 'Define the responsibilities, permissions, and workspace layout for translators, typesetters, reviewers, and administrators.'
+                              : '拆解译员、排版员、校对员和管理员的任务分工、权限边界与工作台布局。',
+                        },
+                        {
+                          title:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder Card Title 03'
+                                : '卡片标题占位 03'
+                              : language === 'en'
+                              ? 'Optimize the Core Editing Experience'
+                              : '优化核心编辑体验',
+                          body:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder copy for this responsibility card. Replace it with the final project content.'
+                                : '此处为职责卡片正文占位，待内容确认后替换为最终项目文案。'
+                              : language === 'en'
+                              ? 'Link the text list and comic canvas in both directions to make translation, typesetting, and review more efficient.'
+                              : '设计文本列表与漫画画布的双向联动，提升翻译、排版和校对效率。',
+                        },
+                        {
+                          title:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder Card Title 04'
+                                : '卡片标题占位 04'
+                              : language === 'en'
+                              ? 'Build AI Assistance and a Quality Loop'
+                              : '构建 AI 辅助与质量闭环',
+                          body:
+                            usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder copy for this responsibility card. Replace it with the final project content.'
+                                : '此处为职责卡片正文占位，待内容确认后替换为最终项目文案。'
+                              : language === 'en'
+                              ? 'Introduce AI translation, terminology prompts, quality checks, and layout assistance while improving task handoffs, feedback, and design standards.'
+                              : '引入 AI 翻译、术语提示、质量检查与排版辅助，同时完善任务流转、反馈机制和设计规范。',
+                        },
+                      ].map((responsibility, responsibilityIndex) => (
+                        <motion.article
+                          key={responsibility.title}
+                          className="bg-[#0C0C0C] p-5 sm:p-6"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: '-60px' }}
+                          transition={{ duration: 0.5, delay: responsibilityIndex * 0.05 }}
+                        >
+                          <span className="text-xs font-medium tracking-[0.2em] text-[#D7E2EA]/35">
+                            {String(responsibilityIndex + 1).padStart(2, '0')}
+                          </span>
+                          <h4 className="mt-5 text-base font-semibold uppercase leading-snug tracking-tight sm:text-lg">
+                            {responsibility.title}
+                          </h4>
+                          <p className="mt-3 text-sm font-light leading-7 text-[#D7E2EA]/60 sm:text-base">
+                            {responsibility.body}
+                          </p>
+                        </motion.article>
+                      ))}
+                    </div>
+                  </div>
+                ) : project.slug === 'nextlevel-studio' && section.id === 'background' ? null : project.slug ===
                     'nextlevel-studio' && section.id === 'research' ? (
                   <div className="grid items-start gap-4 md:grid-cols-2">
                     <motion.figure
@@ -927,9 +1557,14 @@ function CaseStudyPage({
                           : 'AI 工具、课程平台与编辑器能力对比'}
                       </figcaption>
                       <img
-                        src={researchAiToolComparison}
+                        src={researchAiToolComparison1223}
+                        srcSet={`${researchAiToolComparison640} 640w, ${researchAiToolComparison1223} 1223w`}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
                         alt="Comparison of AI tool, course platform, and editor capabilities"
                         loading="lazy"
+                        decoding="async"
+                        width={1223}
+                        height={971}
                         className="w-full rounded-[24px] bg-white object-contain sm:rounded-[30px]"
                       />
                     </motion.figure>
@@ -1010,28 +1645,28 @@ function CaseStudyPage({
                         body:
                           language === 'en'
                             ? 'Aircraft types, versions, job roles, airline requirements, and training stages create a large number of course combinations.'
-                            : '机型、版本、岗位角色、航司要求和培训阶段共同产生了大量课程组合。',
+                            : '机型、版本、岗位、航司要求和培训阶段共同形成大量组合。',
                       },
                       {
-                        title: language === 'en' ? 'Fragmented Materials' : '资料格式分散',
+                        title: language === 'en' ? 'Fragmented Materials' : '材料格式多',
                         body:
                           language === 'en'
                             ? 'Different file formats require different processing methods, making it difficult to maintain consistent course structures.'
-                            : '不同文件格式需要采用不同处理方式，因此难以维持一致的课程结构。',
+                            : '不同文件格式需要不同的阅读和整理方式，难统一课程结构。',
                       },
                       {
                         title: language === 'en' ? 'High Manual Input Cost' : '人工录入成本高',
                         body:
                           language === 'en'
                             ? 'Large amounts of information require manual transcription, creating long production cycles and potential errors.'
-                            : '大量信息需要人工录入，造成较长的生产周期，并带来潜在错误。',
+                            : '大量信息依赖手动转录，周期长，也容易产生输入错误。',
                       },
                       {
                         title: language === 'en' ? 'Large Content Scale' : '内容规模庞大',
                         body:
                           language === 'en'
                             ? 'Training materials require repeated reading, extraction, rewriting, and review.'
-                            : '培训资料需要反复阅读、提取、改写与审核。',
+                            : '需要反复阅读、提取、重写和校对密集材料。',
                       },
                       {
                         title:
@@ -1041,7 +1676,7 @@ function CaseStudyPage({
                         body:
                           language === 'en'
                             ? 'Incorrect, outdated, missing, or inconsistent content can affect training quality and compliance. AI-generated content cannot be published automatically.'
-                            : '错误、过时、缺失或不一致的内容可能影响培训质量与合规性，AI 生成内容不能自动发布。',
+                            : '内容错误、过期、遗漏或不一致可能影响培训质量和合规，因此不能允许 AI 自动生成后直接发布。',
                       },
                     ].map((item, itemIndex) => (
                       <motion.article
@@ -1068,20 +1703,306 @@ function CaseStudyPage({
                   </div>
                 ) : (
                   <div className={showPair ? 'grid gap-4 md:grid-cols-2' : 'grid gap-4'}>
-                    <motion.img
+                    {isGenericPlaceholder && section.id === 'background' ? (
+                      <div className="space-y-4 sm:space-y-6">
+                        {overviewImages.map((image, imageIndex) => (
+                          <motion.img
+                            key={image}
+                            src={
+                              project.slug === 'project-placeholder-05' &&
+                              language === 'zh' &&
+                              imageIndex === 0
+                                ? gpuRentalOverviewZh
+                                : image
+                            }
+                            alt={`${project.name} project overview ${imageIndex + 1}`}
+                            loading="lazy"
+                            decoding="async"
+                            width={2048}
+                            height={1536}
+                            className="h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '-80px' }}
+                            transition={{ duration: 0.65, delay: imageIndex * 0.08 }}
+                          />
+                        ))}
+                      </div>
+                    ) : isFullMiaofanPlaceholder && section.id === 'background' ? (
+                      <motion.img
+                        src={
+                          language === 'en'
+                            ? playableProjectOverviewEn
+                            : playableProjectOverviewZh
+                        }
+                        alt={
+                          language === 'en'
+                            ? 'Playable interactive ads project overview'
+                            : '试玩互动广告项目概览'
+                        }
+                        loading="lazy"
+                        decoding="async"
+                        width={2048}
+                        height={1536}
+                        className="h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isHuanzhiPlaceholder && section.id === 'background' ? (
+                      <motion.img
+                        src={huanzhiProjectOverview}
+                        alt="Huanzhi mini program redesign project overview"
+                        loading="lazy"
+                        decoding="async"
+                        width={3000}
+                        height={2250}
+                        className="h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isFullMiaofanPlaceholder && section.id === 'design-challenge' ? (
+                      <motion.img
+                        src={
+                          language === 'en'
+                            ? playableDesignDirectionEn
+                            : playableDesignDirectionZh
+                        }
+                        alt={language === 'en' ? 'Design direction' : '设计方向'}
+                        loading="lazy"
+                        decoding="async"
+                        width={2000}
+                        height={1044}
+                        className="h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isHuanzhiPlaceholder && section.id === 'design-challenge' ? (
+                      <motion.img
+                        src={huanzhiBusinessNeeds1}
+                        alt="Huanzhi business and user needs"
+                        loading="lazy"
+                        decoding="async"
+                        width={3000}
+                        height={1959}
+                        className="h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isFullMiaofanPlaceholder && section.id === 'solution' ? (
+                      <motion.img
+                        src={playableLockScreenApplication}
+                        alt="Playable ads lock-screen application"
+                        loading="lazy"
+                        decoding="async"
+                        width={2000}
+                        height={1500}
+                        className="h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isHuanzhiPlaceholder && section.id === 'solution' ? (
+                      <motion.img
+                        src={huanzhiDesignGoalsStrategy}
+                        alt="Huanzhi design goals and strategy"
+                        loading="lazy"
+                        decoding="async"
+                        width={3000}
+                        height={3440}
+                        className="h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isFullMiaofanPlaceholder && section.id === 'prototype' ? (
+                      <motion.img
+                        src={
+                          language === 'en'
+                            ? playableInteractiveLockScreenLayoutEn
+                            : playableInteractiveLockScreenLayoutZh
+                        }
+                        alt={
+                          language === 'en'
+                            ? 'Interactive lock-screen layout'
+                            : '互动锁屏布局设计'
+                        }
+                        loading="lazy"
+                        decoding="async"
+                        width={2000}
+                        height={1368}
+                        className="h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isHuanzhiPlaceholder && section.id === 'prototype' ? (
+                      <motion.img
+                        src={huanzhiMapRedesing}
+                        alt="Huanzhi map redesing"
+                        loading="lazy"
+                        decoding="async"
+                        width={3000}
+                        height={5961}
+                        className="h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : isFullMiaofanPlaceholder && section.id === 'reflection' ? (
+                      <motion.img
+                        src={
+                          language === 'en'
+                            ? playableRevenueDataLoopEn
+                            : playableRevenueDataLoopZh
+                        }
+                        alt={language === 'en' ? 'Revenue and data loop' : '商业化升级与数据回收'}
+                        loading="lazy"
+                        decoding="async"
+                        width={2000}
+                        height={language === 'en' ? 1000 : 994}
+                        className="h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      />
+                    ) : usesPlaceholderLayout ? (
+                      <motion.div
+                        className={`flex w-full items-center justify-center rounded-[24px] border border-dashed border-[#D7E2EA]/25 bg-gradient-to-br from-[#D7E2EA]/[0.08] to-[#D7E2EA]/[0.02] sm:rounded-[34px] md:rounded-[46px] ${
+                          isMiaofanOverview
+                            ? 'aspect-[3000/2805]'
+                            : isMiaofanWorkflow
+                              ? 'aspect-[3000/1659]'
+                              : isMiaofanRoleWorkspace
+                                ? 'aspect-[3000/1335]'
+                                : isMiaofanBidirectionalCanvas
+                                  ? 'aspect-[3000/1701]'
+                                  : 'aspect-[3000/1559]'
+                        }`}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65 }}
+                      >
+                        <span className="text-xs font-medium uppercase tracking-[0.22em] text-[#D7E2EA]/30">
+                          {language === 'en'
+                            ? `Image placeholder ${String(sectionIndex + 1).padStart(2, '0')}`
+                            : `图片占位 ${String(sectionIndex + 1).padStart(2, '0')}`}
+                        </span>
+                      </motion.div>
+                    ) : (
+                      <motion.img
                       src={primaryImage}
+                      srcSet={
+                        project.slug === 'nextlevel-studio' && section.id === 'solution'
+                          ? `${guidedCreationFlow768} 768w, ${guidedCreationFlow1280} 1280w, ${guidedCreationFlow1920} 1920w, ${guidedCreationFlow2560} 2560w`
+                          : project.slug === 'nextlevel-studio' && section.id === 'prototype'
+                            ? `${aeroDesignSystem768} 768w, ${aeroDesignSystem1280} 1280w, ${aeroDesignSystem1920} 1920w`
+                          : project.slug === 'nextlevel-studio' && section.id === 'reflection'
+                            ? `${aeroOtherKeyScreens768} 768w, ${aeroOtherKeyScreens1280} 1280w, ${aeroOtherKeyScreens1920} 1920w`
+                          : undefined
+                      }
+                      sizes={
+                        project.slug === 'nextlevel-studio' && section.id === 'solution'
+                          ? '(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)'
+                          : project.slug === 'nextlevel-studio' && section.id === 'prototype'
+                            ? '(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)'
+                          : project.slug === 'nextlevel-studio' && section.id === 'reflection'
+                            ? '(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)'
+                          : undefined
+                      }
                       alt={`${project.name} ${section.label}`}
                       loading="lazy"
+                      decoding="async"
+                      width={
+                        language === 'zh' &&
+                        (isMiaofanOverview ||
+                          isMiaofanWorkflow ||
+                          isMiaofanRoleWorkspace ||
+                          isMiaofanBidirectionalCanvas)
+                          ? 2000
+                          : isMiaofanOverview
+                          ? 3000
+                          : isMiaofanWorkflow
+                            ? 3000
+                            : isMiaofanRoleWorkspace
+                              ? 3000
+                              : isMiaofanBidirectionalCanvas
+                                ? 3000
+                                : isMiaofanOtherKeyScreens
+                                  ? 3000
+                          : project.slug === 'nextlevel-studio' && section.id === 'solution'
+                            ? 3000
+                            : project.slug === 'nextlevel-studio' && section.id === 'prototype'
+                              ? 2000
+                            : project.slug === 'nextlevel-studio' && section.id === 'reflection'
+                              ? 2000
+                            : undefined
+                      }
+                      height={
+                        language === 'zh' && isMiaofanOverview
+                          ? 1729
+                          : language === 'zh' && isMiaofanWorkflow
+                            ? 1106
+                            : language === 'zh' && isMiaofanRoleWorkspace
+                              ? 890
+                              : language === 'zh' && isMiaofanBidirectionalCanvas
+                                ? 1126
+                                : isMiaofanOverview
+                          ? 2805
+                          : isMiaofanWorkflow
+                            ? 1659
+                            : isMiaofanRoleWorkspace
+                              ? 1335
+                              : isMiaofanBidirectionalCanvas
+                                ? 1701
+                                : isMiaofanOtherKeyScreens
+                                  ? 1559
+                          : project.slug === 'nextlevel-studio' && section.id === 'solution'
+                            ? 2250
+                            : project.slug === 'nextlevel-studio' && section.id === 'prototype'
+                              ? 1218
+                            : project.slug === 'nextlevel-studio' && section.id === 'reflection'
+                              ? 1500
+                            : undefined
+                      }
                       className={
                         project.slug === 'nextlevel-studio' && section.id === 'solution'
                           ? 'w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]'
+                          : project.slug === 'nextlevel-studio' && section.id === 'prototype'
+                            ? 'h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]'
+                          : project.slug === 'nextlevel-studio' && section.id === 'reflection'
+                            ? 'h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]'
+                          : isMiaofanOverview
+                            ? 'h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]'
+                            : isMiaofanWorkflow
+                              ? 'h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]'
+                              : isMiaofanRoleWorkspace
+                                ? 'h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]'
+                                : isMiaofanBidirectionalCanvas
+                                  ? 'h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]'
+                                  : isMiaofanOtherKeyScreens
+                                    ? 'h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]'
                           : 'aspect-[16/10] h-full w-full rounded-[24px] object-cover sm:rounded-[34px] md:rounded-[46px]'
                       }
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: '-80px' }}
                       transition={{ duration: 0.65 }}
-                    />
+                      />
+                    )}
                     {showPair && (
                       <motion.img
                         src={secondaryImage}
@@ -1097,37 +2018,261 @@ function CaseStudyPage({
                   </div>
                 )}
 
+                {isMiaofanBidirectionalCanvas && (
+                  <div className="mt-20 space-y-20 sm:mt-28 sm:space-y-28">
+                    {[
+                      {
+                        number: '02',
+                        title: 'Terminology Memory System',
+                        titleZh: '术语记忆系统',
+                        body:
+                          'To keep translations consistent, the system detects recurring terms, recommends approved translations, flags conflicts, and supports one-click replacement.',
+                        bodyZh:
+                          '为确保前后译法一致，识别高频词并推荐已有译法；冲突时主动提醒并支持快速替换。',
+                        image: miaofanTerminologyMemorySystem,
+                        imageZh: miaofanTerminologyMemorySystemZh,
+                        imageWidth: 3000,
+                        imageHeight: 1721,
+                        imageWidthZh: 2000,
+                        imageHeightZh: 1147,
+                      },
+                      {
+                        number: '03',
+                        title: 'AI-Assisted Human-Approved',
+                        titleZh: 'AI辅助，人来拍板',
+                        body:
+                          'AI is designed as an assistive layer that provides suggestions and validation rather than replacing translators. Since comic translation relies on context and emotional nuance, AI improves efficiency while preserving human judgment.',
+                        bodyZh:
+                          'AI 翻译没有被设计成“全部自动替换”，而是以建议、提醒和校验的形式出现。因为漫画翻译强依赖语境、人物关系和情绪表达，AI 可以提高效率，但不应削弱专业译员的判断权。',
+                        image: miaofanAiAssistedHumanApproved,
+                        imageZh: miaofanAiAssistedHumanApprovedZh,
+                        imageWidth: 3000,
+                        imageHeight: 1716,
+                        imageWidthZh: 2000,
+                        imageHeightZh: 1144,
+                      },
+                      {
+                        number: '04',
+                        title: 'An Easy-to-Use Editing Experience',
+                        titleZh: '低门槛的编辑工具',
+                        body:
+                          'Comic typesetting typically requires advanced image-editing skills, but many users are not professional designers. The workspace therefore focuses on lightweight tools for the most common layout tasks.',
+                        bodyZh:
+                          '漫画排版通常需要较高的图像编辑经验，而平台面对的用户并不一定都熟悉专业设计工具。所以需要围绕漫画排版的高频任务设计轻量化工具。',
+                        image: miaofanEasyEditingExperience,
+                        imageZh: miaofanEasyEditingExperienceZh,
+                        imageWidth: 3000,
+                        imageHeight: 1845,
+                        imageWidthZh: 2000,
+                        imageHeightZh: 1233,
+                      },
+                      {
+                        number: '05',
+                        title: 'Find Issues\nTrack Progress\nResolve',
+                        titleZh: '问题能定位\n进度能追踪\n修改能闭环',
+                        body:
+                          'In multi-role collaboration, quality feedback cannot remain in chat. It must become a task linked to the page, text, owner, and status.',
+                        bodyZh:
+                          '在多人协作中，质量反馈不能停留在聊天沟通里，而要转化成绑定页面、文本、负责人和状态的任务。',
+                        image: miaofanFindIssuesTrackProgressResolve,
+                        imageZh: miaofanFindIssuesTrackProgressResolve,
+                        imageWidth: 3000,
+                        imageHeight: 1686,
+                        imageWidthZh: 3000,
+                        imageHeightZh: 1686,
+                      },
+                      {
+                        number: '06',
+                        title: 'Complex Progress at a Glance',
+                        titleZh: '复杂进度一眼看清',
+                        body:
+                          'In collaborative workflows, quality feedback should not remain only in conversations. Instead, it should be transformed into actionable tasks linked to specific pages, text sections, owners, and statuses.',
+                        bodyZh:
+                          '在多人协作中，质量反馈不能停留在聊天沟通里，而要转化成绑定页面、文本、负责人和状态的任务。',
+                        image: miaofanComplexProgressAtAGlance,
+                        imageZh: miaofanComplexProgressAtAGlance,
+                        imageWidth: 3000,
+                        imageHeight: 1751,
+                        imageWidthZh: 3000,
+                        imageHeightZh: 1751,
+                      },
+                    ]
+                      .filter(
+                        (decision) =>
+                          !(
+                            isFullMiaofanPlaceholder &&
+                            (decision.number === '05' || decision.number === '06')
+                          ),
+                      )
+                      .map((decision) => (
+                      <motion.article
+                        key={decision.number}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <h2 className="whitespace-pre-line text-[clamp(1.6rem,3vw,3.25rem)] font-bold uppercase leading-tight tracking-tight">
+                          {isFullMiaofanPlaceholder && decision.number === '02'
+                            ? language === 'en'
+                              ? 'Interactive Lock-Screen Use Case'
+                              : '互动锁屏应用案例'
+                            : isFullMiaofanPlaceholder && decision.number === '03'
+                              ? language === 'en'
+                                ? 'Applying Interactive Ads'
+                                : '互动广告的应用'
+                            : isFullMiaofanPlaceholder && decision.number === '04'
+                              ? language === 'en'
+                                ? 'Fullscreen Guidance'
+                                : '全屏模式下的引导'
+                            : usesPlaceholderLayout
+                            ? language === 'en'
+                              ? decision.number === '02'
+                                ? 'Vehicle Control.'
+                                : `Placeholder Feature Title ${decision.number}`
+                              : decision.number === '02'
+                                ? '车辆控制'
+                                : `功能标题占位 ${decision.number}`
+                            : language === 'en'
+                              ? decision.title
+                              : decision.titleZh}
+                        </h2>
+                        {!((isHuanzhiPlaceholder && decision.number === '02') ||
+                          (isFullMiaofanPlaceholder &&
+                            (decision.number === '02' || decision.number === '04'))) && (
+                          <p className="mt-5 max-w-3xl text-base font-light leading-relaxed text-[#D7E2EA]/55 sm:text-lg">
+                            {isFullMiaofanPlaceholder && decision.number === '03'
+                              ? language === 'en'
+                                ? 'Our scenario required two actions: play and download. We used content hierarchy to help users quickly locate the playable stream. All essential content was therefore kept within one screen, with minimal supporting information.'
+                                : '我们的场景需求是：试玩+下载。主要通过页面上内容的面积占比，让用户快速定位到投屏的试玩内容。所以我们决定在一屏内展示所有内容，不在页面上显示过多信息。'
+                              : usesPlaceholderLayout
+                              ? language === 'en'
+                                ? 'Placeholder body copy for this feature. Replace it with the final design rationale and outcome.'
+                                : '此处为功能说明占位，待内容确认后替换为最终设计思路与结果。'
+                              : language === 'en'
+                                ? decision.body
+                                : decision.bodyZh}
+                          </p>
+                        )}
+                        {isFullMiaofanPlaceholder && decision.number === '02' ? (
+                          <img
+                            src={
+                              language === 'en'
+                                ? playableInteractiveLockScreenUseCaseEn
+                                : playableInteractiveLockScreenUseCaseZh
+                            }
+                            alt={
+                              language === 'en'
+                                ? 'Interactive lock-screen use case'
+                                : '互动锁屏应用案例'
+                            }
+                            loading="lazy"
+                            decoding="async"
+                            width={2000}
+                            height={language === 'en' ? 1307 : 1305}
+                            className="mt-9 h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : isFullMiaofanPlaceholder && decision.number === '03' ? (
+                          <img
+                            src={
+                              language === 'en'
+                                ? playableApplyingInteractiveAdsEn
+                                : playableApplyingInteractiveAdsZh
+                            }
+                            alt={language === 'en' ? 'Applying interactive ads' : '互动广告的应用'}
+                            loading="lazy"
+                            decoding="async"
+                            width={2000}
+                            height={1183}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : isFullMiaofanPlaceholder && decision.number === '04' ? (
+                          <img
+                            src={
+                              language === 'en'
+                                ? playableFullscreenGuidanceEn
+                                : playableFullscreenGuidanceZh
+                            }
+                            alt={language === 'en' ? 'Fullscreen guidance' : '全屏模式下的引导'}
+                            loading="lazy"
+                            decoding="async"
+                            width={2000}
+                            height={1294}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : isHuanzhiPlaceholder && decision.number === '02' ? (
+                          <img
+                            src={huanzhiVehicleControl}
+                            alt="Huanzhi vehicle control redesign"
+                            loading="lazy"
+                            decoding="async"
+                            width={3000}
+                            height={3962}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : !usesPlaceholderLayout && decision.image ? (
+                          <img
+                            src={language === 'zh' ? decision.imageZh : decision.image}
+                            alt={decision.title}
+                            loading="lazy"
+                            decoding="async"
+                            width={language === 'zh' ? decision.imageWidthZh : decision.imageWidth}
+                            height={language === 'zh' ? decision.imageHeightZh : decision.imageHeight}
+                            className="mt-9 h-auto w-full rounded-[24px] bg-white object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : (
+                          <div className="mt-9 flex aspect-[16/9] w-full items-center justify-center rounded-[24px] border border-dashed border-[#D7E2EA]/25 bg-gradient-to-br from-[#D7E2EA]/[0.08] to-[#D7E2EA]/[0.02] sm:rounded-[34px] md:rounded-[46px]">
+                            <span className="text-xs font-medium uppercase tracking-[0.22em] text-[#D7E2EA]/30">
+                              {language === 'en'
+                                ? `Image placeholder ${decision.number}`
+                                : `图片占位 ${decision.number}`}
+                            </span>
+                          </div>
+                        )}
+                      </motion.article>
+                      ))}
+                  </div>
+                )}
+
                 {project.slug === 'nextlevel-studio' && section.id === 'solution' && (
                   <div className="mt-20 space-y-20 sm:mt-28 sm:space-y-28">
                     {[
                       {
                         title:
                           language === 'en'
-                            ? 'Making the AI Black Box Perceivable'
+                            ? 'Transparent AI Generation Process'
                             : '让 AI 黑箱变得可感知',
                         goal:
                           language === 'en'
-                            ? 'Goal: Reduce user uncertainty'
+                            ? 'Goal: Reduce uncertainty during AI operations'
                             : '目标：降低用户的不确定感',
                       },
                       {
                         title:
-                          language === 'en'
-                            ? 'Multi-View Editing for Precise Course Control'
-                            : '多视图编辑，精细化掌控课程',
+                          language === 'en' ? 'Multi-View Editing Experience' : '多视图编辑体验',
                         goal:
                           language === 'en'
-                            ? 'Goal: Let users handle different tasks in the most appropriate way'
-                            : '目标：让用户可以用最合适方式处理不同任务',
+                            ? 'AI output becomes structured content objects rather than simple text.'
+                            : 'AI 输出转化为结构化内容对象，而非简单文本。',
                       },
                       {
                         title:
                           language === 'en'
-                            ? 'Conversational Partial Editing'
+                            ? 'Collaborative Editing with Outline View'
+                            : '大纲视图协同编辑',
+                        goal:
+                          language === 'en'
+                            ? 'The dual-mode editing experience allows users to switch freely between content structure and visual presentation, creating a more efficient and controllable course optimization workflow.'
+                            : '双模式切换让用户在逻辑结构与视觉呈现之间自由切换，实现高效、可控的课程优化体验。',
+                      },
+                      {
+                        title:
+                          language === 'en'
+                            ? 'Conversational, Targeted Editing'
                             : '对话式局部编辑',
                         goal:
                           language === 'en'
-                            ? 'Goal: Use natural language to make precise local AI edits without overwriting the entire course'
+                            ? 'Goal: Use natural language to make precise, local AI edits without overwriting the entire course.'
                             : '目标：通过自然语言让 AI 精准修改局部内容，避免一次性覆盖全部课程。',
                       },
                       {
@@ -1137,7 +2282,7 @@ function CaseStudyPage({
                             : '课程导出兼顾多种格式',
                         goal:
                           language === 'en'
-                            ? 'Goal: Deliver courses to business systems as video, PDF, SCORM packages, and LMS uploads'
+                            ? 'Goal: Courses must ultimately enter business systems in multiple formats, including video, PDF, SCORM packages, and LMS uploads.'
                             : '目标：课程最终需要以多种格式进入业务系统，包括视频、PDF、SCORM 包和 LMS 上传。',
                       },
                     ].map((decision, decisionIndex) => (
@@ -1148,13 +2293,128 @@ function CaseStudyPage({
                         <h3 className="mt-4 max-w-4xl text-base font-medium leading-relaxed text-[#D7E2EA]/60 sm:text-xl">
                           {decision.goal}
                         </h3>
-                        <div className="mt-9 flex aspect-[16/8] w-full items-center justify-center rounded-[24px] border border-dashed border-[#D7E2EA]/25 bg-gradient-to-br from-[#D7E2EA]/[0.08] to-[#D7E2EA]/[0.02] sm:rounded-[34px] md:rounded-[46px]">
-                          <span className="text-xs font-medium uppercase tracking-[0.22em] text-[#D7E2EA]/30">
-                            {language === 'en'
-                              ? `Image placeholder ${decisionIndex + 1}`
-                              : `图片占位 ${decisionIndex + 1}`}
-                          </span>
-                        </div>
+                        {decisionIndex === 0 ? (
+                          <img
+                            src={makingAiProcessesTransparent1280}
+                            srcSet={`${makingAiProcessesTransparent768} 768w, ${makingAiProcessesTransparent1280} 1280w, ${makingAiProcessesTransparent1920} 1920w, ${makingAiProcessesTransparent2560} 2560w`}
+                            sizes="(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)"
+                            alt="Making AI Processes Transparent"
+                            title="Making AI Processes Transparent"
+                            loading="lazy"
+                            decoding="async"
+                            width={3000}
+                            height={1890}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : decisionIndex === 1 ? (
+                          <img
+                            src={editableAiGeneratedCourseStructure1280}
+                            srcSet={`${editableAiGeneratedCourseStructure768} 768w, ${editableAiGeneratedCourseStructure1280} 1280w, ${editableAiGeneratedCourseStructure1920} 1920w, ${editableAiGeneratedCourseStructure2560} 2560w`}
+                            sizes="(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)"
+                            alt="Editable AI-Generated Course Structure"
+                            title="Editable AI-Generated Course Structure"
+                            loading="lazy"
+                            decoding="async"
+                            width={3000}
+                            height={1590}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : decisionIndex === 2 ? (
+                          <img
+                            src={
+                              language === 'zh'
+                                ? collaborativeOutlineViewZh1280
+                                : collaborativeOutlineViewEn1280
+                            }
+                            srcSet={
+                              language === 'zh'
+                                ? `${collaborativeOutlineViewZh768} 768w, ${collaborativeOutlineViewZh1280} 1280w, ${collaborativeOutlineViewZh1920} 1920w`
+                                : `${collaborativeOutlineViewEn768} 768w, ${collaborativeOutlineViewEn1280} 1280w, ${collaborativeOutlineViewEn1920} 1920w`
+                            }
+                            sizes="(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)"
+                            alt={
+                              language === 'zh'
+                                ? '大纲视图协同编辑'
+                                : 'Collaborative Editing with Outline View'
+                            }
+                            title={
+                              language === 'zh'
+                                ? '大纲视图协同编辑'
+                                : 'Collaborative Editing with Outline View'
+                            }
+                            loading="lazy"
+                            decoding="async"
+                            width={2000}
+                            height={language === 'zh' ? 1422 : 1440}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : decisionIndex === 3 ? (
+                          <img
+                            src={
+                              language === 'zh'
+                                ? conversationalTargetedEditingZh1280
+                                : conversationalTargetedEditingEn1280
+                            }
+                            srcSet={
+                              language === 'zh'
+                                ? `${conversationalTargetedEditingZh768} 768w, ${conversationalTargetedEditingZh1280} 1280w, ${conversationalTargetedEditingZh1920} 1920w`
+                                : `${conversationalTargetedEditingEn768} 768w, ${conversationalTargetedEditingEn1280} 1280w, ${conversationalTargetedEditingEn1920} 1920w`
+                            }
+                            sizes="(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)"
+                            alt={
+                              language === 'zh'
+                                ? '对话式局部编辑'
+                                : 'Conversational, Targeted Editing'
+                            }
+                            title={
+                              language === 'zh'
+                                ? '对话式局部编辑'
+                                : 'Conversational, Targeted Editing'
+                            }
+                            loading="lazy"
+                            decoding="async"
+                            width={2000}
+                            height={1131}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : decisionIndex === 4 ? (
+                          <img
+                            src={
+                              language === 'zh'
+                                ? courseExportFormatsZh1280
+                                : courseExportFormatsEn1280
+                            }
+                            srcSet={
+                              language === 'zh'
+                                ? `${courseExportFormatsZh768} 768w, ${courseExportFormatsZh1280} 1280w, ${courseExportFormatsZh1920} 1920w`
+                                : `${courseExportFormatsEn768} 768w, ${courseExportFormatsEn1280} 1280w, ${courseExportFormatsEn1920} 1920w`
+                            }
+                            sizes="(min-width: 1024px) calc(100vw - 380px), calc(100vw - 40px)"
+                            alt={
+                              language === 'zh'
+                                ? '课程导出兼顾多种格式'
+                                : 'Course Export Across Multiple Formats'
+                            }
+                            title={
+                              language === 'zh'
+                                ? '课程导出兼顾多种格式'
+                                : 'Course Export Across Multiple Formats'
+                            }
+                            loading="lazy"
+                            decoding="async"
+                            width={2000}
+                            height={1245}
+                            className="mt-9 h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
+                          />
+                        ) : (
+                          <div className="mt-9 flex aspect-[16/8] w-full items-center justify-center rounded-[24px] border border-dashed border-[#D7E2EA]/25 bg-gradient-to-br from-[#D7E2EA]/[0.08] to-[#D7E2EA]/[0.02] sm:rounded-[34px] md:rounded-[46px]">
+                            <span className="text-xs font-medium uppercase tracking-[0.22em] text-[#D7E2EA]/30">
+                              {language === 'en'
+                                ? `Image placeholder ${decisionIndex + 1}`
+                                : `图片占位 ${decisionIndex + 1}`}
+                            </span>
+                          </div>
+                        )}
                       </article>
                     ))}
                   </div>
@@ -1164,6 +2424,19 @@ function CaseStudyPage({
           })}
         </div>
       </div>
+
+      <motion.button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label={language === 'en' ? 'Back to top' : '回到顶部'}
+        title={language === 'en' ? 'Back to top' : '回到顶部'}
+        className="fixed bottom-5 left-5 z-[110] inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#D7E2EA]/30 bg-[#D7E2EA] px-4 text-xs font-semibold uppercase tracking-[0.14em] text-[#0C0C0C] shadow-[0_12px_32px_rgba(0,0,0,.35)] sm:bottom-8 sm:left-8"
+        whileHover={{ y: -3 }}
+        whileTap={{ scale: 0.94 }}
+      >
+        <ArrowUp size={18} strokeWidth={2.2} />
+        <span className="hidden sm:inline">{language === 'en' ? 'Back to top' : '回到顶部'}</span>
+      </motion.button>
 
       <footer className="border-t border-[#D7E2EA]/15 px-5 py-10 sm:px-8 md:px-12">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-6">

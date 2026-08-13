@@ -1,55 +1,42 @@
-import type { CSSProperties } from 'react'
 import { motion, useSpring, useTransform, type MotionValue } from 'framer-motion'
-
-export type EyeLayer = {
-  src: string
-  alt?: string
-  className?: string
-  style: CSSProperties
-}
 
 type EyeTrackerProps = {
   x: MotionValue<number>
   y: MotionValue<number>
-  leftEye?: EyeLayer
-  rightEye?: EyeLayer
-  maxOffset?: number
+  disabled?: boolean
 }
 
-export function EyeTracker({
-  x,
-  y,
-  leftEye,
-  rightEye,
-  maxOffset = 5,
-}: EyeTrackerProps) {
-  const eyeX = useSpring(useTransform(x, (value) => value * maxOffset), {
-    stiffness: 280,
-    damping: 24,
-    mass: 0.35,
+export function EyeTracker({ x, y, disabled = false }: EyeTrackerProps) {
+  const eyeX = useSpring(useTransform(x, (value) => value * 5.5), {
+    stiffness: 460,
+    damping: 30,
+    mass: 0.4,
   })
-  const eyeY = useSpring(useTransform(y, (value) => value * maxOffset * 0.72), {
-    stiffness: 280,
-    damping: 24,
-    mass: 0.35,
+  const eyeY = useSpring(useTransform(y, (value) => value * 4), {
+    stiffness: 460,
+    damping: 30,
+    mass: 0.4,
   })
-
-  if (!leftEye && !rightEye) return null
 
   return (
     <div className="interactive-avatar__eyes" aria-hidden="true">
-      {[leftEye, rightEye].map((eye, index) =>
-        eye ? (
+      {[
+        ['left', '/avatar/gaze/eye-left.png'],
+        ['right', '/avatar/gaze/eye-right.png'],
+      ].map(([side, src]) => (
+        <span
+          key={side}
+          className={`interactive-avatar__eye-window interactive-avatar__eye-window--${side}`}
+        >
           <motion.img
-            key={`${eye.src}-${index}`}
-            src={eye.src}
-            alt={eye.alt ?? ''}
-            className={eye.className}
-            style={{ ...eye.style, x: eyeX, y: eyeY }}
+            src={src}
+            alt=""
+            className="interactive-avatar__eye-image"
+            style={disabled ? undefined : { x: eyeX, y: eyeY }}
             draggable={false}
           />
-        ) : null,
-      )}
+        </span>
+      ))}
     </div>
   )
 }
