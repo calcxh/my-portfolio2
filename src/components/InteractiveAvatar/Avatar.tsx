@@ -13,19 +13,13 @@ export type InteractiveAvatarProps = {
   className?: string
 }
 
-const avatarAssetVersion = '20260816-motion-frame-fix-v2'
+const avatarAssetVersion = '20260816-exact-frame-local-repair-v3'
 const avatarAssetRoot = `${import.meta.env.BASE_URL}avatar/sequence`
 const avatarAsset = (fileName: string) =>
   `${avatarAssetRoot}/${fileName}?v=${avatarAssetVersion}`
 
-const sequenceAssets = Array.from(
-  { length: 60 },
-  (_, index) => {
-    const sourceFrameIndex = index === 41 ? 42 : index === 43 ? 44 : index
-    return avatarAsset(
-      `frame-${String(sourceFrameIndex).padStart(2, '0')}.webp`,
-    )
-  },
+const sequenceAssets = Array.from({ length: 60 }, (_, index) =>
+  avatarAsset(`frame-${String(index).padStart(2, '0')}.webp`),
 )
 
 const springConfig = {
