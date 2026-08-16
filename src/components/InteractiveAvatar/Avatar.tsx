@@ -13,7 +13,7 @@ export type InteractiveAvatarProps = {
   className?: string
 }
 
-const avatarAssetVersion = '20260816-exact-frame-local-repair-v3'
+const avatarAssetVersion = '20260816-neutral-alpha-clean-v4'
 const avatarAssetRoot = `${import.meta.env.BASE_URL}avatar/sequence`
 const avatarAsset = (fileName: string) =>
   `${avatarAssetRoot}/${fileName}?v=${avatarAssetVersion}`
