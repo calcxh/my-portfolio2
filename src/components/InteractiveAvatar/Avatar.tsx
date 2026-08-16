@@ -13,7 +13,7 @@ export type InteractiveAvatarProps = {
   className?: string
 }
 
-const avatarAssetVersion = '20260816-neutral-source-fix'
+const avatarAssetVersion = '20260816-motion-frame-fix-v2'
 const avatarAssetRoot = `${import.meta.env.BASE_URL}avatar/sequence`
 const avatarAsset = (fileName: string) =>
   `${avatarAssetRoot}/${fileName}?v=${avatarAssetVersion}`
@@ -35,7 +35,7 @@ const springConfig = {
 }
 
 export function InteractiveAvatar({
-  src = avatarAsset('neutral-fixed.webp'),
+  src = avatarAsset('neutral.webp'),
   alt = 'Carol, AI product designer',
   className = '',
 }: InteractiveAvatarProps) {
