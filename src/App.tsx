@@ -95,10 +95,9 @@ import huanzhiDesignGoalsStrategy from './assets/huanzhi-design-goals-strategy.w
 import huanzhiMapRedesing from './assets/huanzhi-map-redesing.webp'
 import huanzhiVehicleControl from './assets/huanzhi-vehicle-control.webp'
 import innerglowOverview42 from './assets/innerglow-overview-42.jpg'
-import innerglowOverview43 from './assets/innerglow-overview-43.jpg'
+import innerglowFullCase from './assets/innerglow-full-case.webp'
 import gpuRentalOverview44 from './assets/gpu-rental-overview-44.jpg'
-import gpuRentalOverview45 from './assets/gpu-rental-overview-45.jpg'
-import gpuRentalOverviewZh from './assets/gpu-rental-overview-zh.webp'
+import gpuRentalFullCase from './assets/gpu-rental-full-case.webp'
 import teekidsOverview46 from './assets/teekids-overview-46.jpg'
 import teekidsOverview47 from './assets/teekids-overview-47.jpg'
 import playableInteractiveAdsCover from './assets/playable-interactive-ads-cover.webp'
@@ -119,6 +118,20 @@ import playableFullscreenGuidanceEn from './assets/playable-fullscreen-guidance-
 import playableFullscreenGuidanceZh from './assets/playable-fullscreen-guidance-zh.webp'
 import playableRevenueDataLoopEn from './assets/playable-revenue-data-loop-en.webp'
 import playableRevenueDataLoopZh from './assets/playable-revenue-data-loop-zh.webp'
+import marqueeAero from './assets/marquee-aero.webp'
+import marqueeGpuRental from './assets/marquee-gpu-rental.webp'
+import marqueeHuanzhi from './assets/marquee-huanzhi.webp'
+import marqueeInnerglow from './assets/marquee-innerglow.webp'
+import marqueeMiaofan from './assets/marquee-miaofan.webp'
+import marqueeTeekids from './assets/marquee-teekids.webp'
+import marqueePlayableInteractiveAds from './assets/marquee-playable-interactive-ads.webp'
+import particleActiveMarquee from './assets/particle-active-marquee.webp'
+import particleActiveCover from './assets/particle-active-cover.webp'
+import particleActiveProjectCard from './assets/particle-active-project-card.webp'
+import particleActiveProjectCardEn from './assets/particle-active-project-card-en.webp'
+import particleActiveOverview2 from './assets/particle-active-overview-2.webp'
+import particleActiveOverview3 from './assets/particle-active-overview-3.webp'
+import particleActiveOverview4 from './assets/particle-active-overview-4.webp'
 
 type Language = 'en' | 'zh'
 
@@ -228,7 +241,7 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
     : [['关于我', '#about'], ['专业能力', '#services'], ['项目', '#projects'], ['联系', '#contact']]
 
   return (
-    <section className="relative flex h-screen min-h-[620px] w-screen min-w-0 max-w-[100vw] flex-col overflow-x-clip bg-[#0C0C0C] px-5 sm:px-8 md:px-10">
+    <section id="home" className="relative flex h-screen min-h-[620px] w-screen min-w-0 max-w-[100vw] flex-col overflow-x-clip bg-[#0C0C0C] px-5 sm:px-8 md:px-10">
       <FadeIn
         y={-20}
         as="nav"
@@ -252,7 +265,15 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
         )}
       </FadeIn>
 
-      <FadeIn delay={0.15} y={40} className="relative z-0 mt-[4.5rem] w-full min-w-0 max-w-full overflow-hidden sm:mt-20 md:mt-[5.25rem]">
+      <FadeIn
+        delay={0.15}
+        y={40}
+        className={`relative z-0 w-full min-w-0 max-w-full overflow-hidden ${
+          language === 'en'
+            ? 'mt-[5.5rem] sm:mt-24 md:mt-[6.5rem]'
+            : 'mt-[6.5rem] sm:mt-28 md:mt-[7.75rem]'
+        }`}
+      >
         <h1 className="hero-heading w-full text-center font-black uppercase tracking-tight">
           <span
             className={
@@ -298,32 +319,50 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
   )
 }
 
-const marqueeImages = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+type MarqueeItem = {
+  src: string
+  slug?: string
+  alt?: string
+  altZh?: string
+}
+
+const marqueeItems: MarqueeItem[] = [
+  {
+    src: marqueePlayableInteractiveAds,
+    slug: 'project-placeholder-07',
+    alt: 'Playable Interactive Ads',
+    altZh: '试玩互动广告',
+  },
+  { src: marqueeAero, slug: 'nextlevel-studio', alt: 'Aero.ai Course Authoring System', altZh: 'Aero.ai 课程编辑系统' },
+  { src: marqueeGpuRental, slug: 'project-placeholder-05', alt: 'GPU Rental App', altZh: '显卡租赁 App' },
+  {
+    src: particleActiveMarquee,
+    slug: 'project-placeholder-08',
+    alt: 'Particle Active Website Design',
+    altZh: 'Particle Active 官网设计',
+  },
+  { src: 'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif' },
+  { src: 'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif' },
+  { src: 'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif' },
+  { src: 'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif' },
+  { src: 'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif' },
+  { src: 'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif' },
+  { src: 'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif' },
+  { src: marqueeInnerglow, slug: 'project-placeholder-04', alt: 'INNERGLOW Website Design', altZh: 'INNERGLOW 网站设计' },
+  { src: marqueeTeekids, slug: 'project-placeholder-06', alt: 'TEEKIDS Website Design', altZh: 'TEEKIDS 网站设计' },
+  { src: marqueeMiaofan, slug: 'aura-brand-identity', alt: 'Miaofan Comic Translation Platform', altZh: '秒翻漫画翻译平台' },
+  { src: marqueeHuanzhi, slug: 'solaris-digital', alt: 'Huanzhi Mini Program Redesign', altZh: '焕智小程序改版' },
+  { src: 'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif' },
+  { src: 'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif' },
+  { src: 'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif' },
+  { src: 'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif' },
+  { src: 'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif' },
+  { src: 'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif' },
 ]
 
-function MarqueeRow({ images, direction, offset }: { images: string[]; direction: 1 | -1; offset: number }) {
-  const tripled = [...images, ...images, ...images]
+function MarqueeRow({ items, direction, offset }: { items: MarqueeItem[]; direction: 1 | -1; offset: number }) {
+  const { language } = useLanguage()
+  const tripled = [...items, ...items, ...items]
   const x = direction === 1 ? offset - 200 : -(offset - 200)
 
   return (
@@ -332,15 +371,35 @@ function MarqueeRow({ images, direction, offset }: { images: string[]; direction
         className="flex w-max gap-3"
         style={{ transform: `translate3d(${x}px,0,0)`, willChange: 'transform' }}
       >
-        {tripled.map((src, index) => (
-          <img
-            key={`${src}-${index}`}
-            src={src}
-            alt=""
-            loading="lazy"
-            className="h-[180px] w-[280px] shrink-0 rounded-2xl object-cover sm:h-[220px] sm:w-[340px] md:h-[270px] md:w-[420px]"
-          />
-        ))}
+        {tripled.map((item, index) => {
+          const image = (
+            <img
+              src={item.src}
+              alt={item.slug ? (language === 'en' ? item.alt : item.altZh) : ''}
+              loading="lazy"
+              decoding="async"
+              width={1260}
+              height={810}
+              draggable={false}
+              className="h-[180px] w-[280px] shrink-0 rounded-2xl object-cover sm:h-[220px] sm:w-[340px] md:h-[270px] md:w-[420px]"
+            />
+          )
+
+          return item.slug ? (
+            <a
+              key={`${item.src}-${index}`}
+              href={`#/case-study/${item.slug}`}
+              aria-label={language === 'en' ? `View case study: ${item.alt}` : `查看案例：${item.altZh}`}
+              className="shrink-0 rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D7E2EA]"
+            >
+              {image}
+            </a>
+          ) : (
+            <div key={`${item.src}-${index}`} className="shrink-0">
+              {image}
+            </div>
+          )
+        })}
       </div>
     </div>
   )
@@ -366,9 +425,9 @@ function MarqueeSection() {
   }, [])
 
   return (
-    <section ref={ref} className="space-y-3 overflow-hidden bg-[#0C0C0C] pb-10 pt-24 sm:pt-32 md:pt-40">
-      <MarqueeRow images={marqueeImages.slice(0, 11)} direction={1} offset={offset} />
-      <MarqueeRow images={marqueeImages.slice(11)} direction={-1} offset={offset} />
+    <section id="showcase" ref={ref} className="space-y-3 overflow-hidden bg-[#0C0C0C] pb-10 pt-24 sm:pt-32 md:pt-40">
+      <MarqueeRow items={marqueeItems.slice(0, 11)} direction={1} offset={offset} />
+      <MarqueeRow items={marqueeItems.slice(11)} direction={-1} offset={offset} />
     </section>
   )
 }
@@ -616,29 +675,46 @@ const projects = [
     category: 'Client',
     categoryZh: '客户项目',
     images: [innerglowOverview42],
-    overviewImages: [innerglowOverview42, innerglowOverview43],
+    overviewImages: [innerglowFullCase],
   },
   {
     name: 'GPU RENTAL APP',
     nameZh: 'GPU RENTAL APP',
     slug: 'project-placeholder-05',
-    year: '2023',
-    platform: 'mobile',
+    year: '2024',
+    platform: ['mobile', 'graphic'],
     category: 'Client',
     categoryZh: '公司项目',
     images: [gpuRentalOverview44],
-    overviewImages: [gpuRentalOverview44, gpuRentalOverview45],
+    overviewImages: [gpuRentalFullCase],
   },
   {
     name: 'TEEKIDS website desgin',
     nameZh: 'TEEKIDS website desgin',
     slug: 'project-placeholder-06',
-    year: '2023',
+    year: '2024',
     platform: 'web',
     category: 'Client',
     categoryZh: '客户项目',
     images: [teekidsOverview46],
     overviewImages: [teekidsOverview46, teekidsOverview47],
+  },
+  {
+    name: 'Particle Active website design',
+    nameZh: 'Particle Active 官网设计',
+    slug: 'project-placeholder-08',
+    year: '2024',
+    platform: 'web',
+    category: 'Client',
+    categoryZh: '客户项目',
+    images: [particleActiveProjectCard],
+    coverImageEn: particleActiveProjectCardEn,
+    overviewImages: [
+      particleActiveCover,
+      particleActiveOverview2,
+      particleActiveOverview3,
+      particleActiveOverview4,
+    ],
   },
 ]
 
@@ -651,6 +727,8 @@ function ProjectCard({
 }) {
   const { language } = useLanguage()
   const projectName = language === 'en' ? project.name : project.nameZh
+  const projectCoverImage =
+    language === 'en' && 'coverImageEn' in project ? project.coverImageEn : project.images[0]
   return (
     <motion.article
       className="group overflow-hidden rounded-[28px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-3 text-[#D7E2EA] sm:rounded-[36px] sm:p-4 lg:rounded-[44px] lg:p-5"
@@ -696,8 +774,8 @@ function ProjectCard({
               />
             ) : (
               <img
-                src={project.images[0]}
-                alt={`${project.name} cover`}
+                src={projectCoverImage}
+                alt={`${projectName} cover`}
                 loading="lazy"
                 decoding="async"
                 width={3000}
@@ -752,7 +830,13 @@ function ProjectsSection() {
   ]
   const visibleProjects = projects
     .map((project, index) => ({ project, index }))
-    .filter(({ project }) => activeFilter === 'all' || project.platform === activeFilter)
+    .filter(({ project }) => {
+      if (activeFilter === 'all') return true
+
+      return Array.isArray(project.platform)
+        ? project.platform.includes(activeFilter)
+        : project.platform === activeFilter
+    })
 
   return (
     <section id="projects" className="relative z-10 -mt-10 rounded-t-[40px] bg-[#0C0C0C] px-4 pb-32 pt-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-6 sm:pt-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:pt-32">
@@ -1067,7 +1151,11 @@ function CaseStudyPage({
   const { language } = useLanguage()
   const isMiaofanProject = project.slug === 'aura-brand-identity'
   const isHuanzhiPlaceholder = project.slug === 'solaris-digital'
-  const isGenericPlaceholder = /^project-placeholder-0[4-6]$/.test(project.slug)
+  const isInnerglowProject = project.slug === 'project-placeholder-04'
+  const isGpuRentalProject = project.slug === 'project-placeholder-05'
+  const isTeekidsProject = project.slug === 'project-placeholder-06'
+  const isParticleActiveProject = project.slug === 'project-placeholder-08'
+  const isGenericPlaceholder = /^project-placeholder-0(?:[4-6]|8)$/.test(project.slug)
   const isFullMiaofanPlaceholder = project.slug === 'project-placeholder-07'
   const usesPlaceholderLayout =
     isHuanzhiPlaceholder || isGenericPlaceholder || isFullMiaofanPlaceholder
@@ -1078,7 +1166,11 @@ function CaseStudyPage({
       : isFullMiaofanPlaceholder
         ? playableInteractiveAdsSections
       : isGenericPlaceholder
-        ? huanzhiPlaceholderSections.filter(({ id }) => id === 'background' || id === 'research')
+        ? huanzhiPlaceholderSections.filter(({ id }) =>
+      isInnerglowProject || isGpuRentalProject || isTeekidsProject || isParticleActiveProject
+        ? id === 'background'
+              : id === 'background' || id === 'research',
+          )
         : usesPlaceholderLayout
         ? huanzhiPlaceholderSections
         : caseStudySections
@@ -1708,18 +1800,12 @@ function CaseStudyPage({
                         {overviewImages.map((image, imageIndex) => (
                           <motion.img
                             key={image}
-                            src={
-                              project.slug === 'project-placeholder-05' &&
-                              language === 'zh' &&
-                              imageIndex === 0
-                                ? gpuRentalOverviewZh
-                                : image
-                            }
+                            src={image}
                             alt={`${project.name} project overview ${imageIndex + 1}`}
                             loading="lazy"
                             decoding="async"
-                            width={2048}
-                            height={1536}
+                            width={2000}
+                            height={isInnerglowProject ? 16067 : isGpuRentalProject ? 12350 : 1536}
                             className="h-auto w-full rounded-[24px] object-contain sm:rounded-[34px] md:rounded-[46px]"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -2465,8 +2551,8 @@ const contactLinks = [
   },
   {
     label: 'LinkedIn',
-    value: 'linkedin.com/in/carol-design',
-    href: 'https://www.linkedin.com/in/carol-design',
+    value: 'linkedin.com/in/和-薛-779491157',
+    href: 'https://www.linkedin.com/in/%E5%92%8C-%E8%96%9B-779491157/',
     icon: Linkedin,
   },
   {
@@ -2711,6 +2797,61 @@ export default function App() {
   const caseStudyIndex = caseStudySlug
     ? projects.findIndex((project) => project.slug === caseStudySlug)
     : -1
+
+  useEffect(() => {
+    if (caseStudyIndex >= 0 || contactOpen) return
+
+    let navigationLocked = false
+    let unlockTimer: ReturnType<typeof setTimeout> | null = null
+    const sectionIds = ['home', 'showcase', 'about', 'services', 'projects']
+
+    const handleSectionWheel = (event: WheelEvent) => {
+      if (
+        window.innerWidth < 768 ||
+        navigationLocked ||
+        event.ctrlKey ||
+        event.metaKey ||
+        Math.abs(event.deltaY) < 35
+      ) {
+        return
+      }
+
+      const targetElement = event.target as HTMLElement | null
+      if (targetElement?.closest('input, textarea, select, [contenteditable="true"]')) return
+
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((section): section is HTMLElement => Boolean(section))
+      if (sections.length !== sectionIds.length) return
+
+      const marker = window.scrollY + 120
+      let currentIndex = 0
+      sections.forEach((section, index) => {
+        if (marker >= section.offsetTop) currentIndex = index
+      })
+
+      const direction = event.deltaY > 0 ? 1 : -1
+      const nextIndex = currentIndex + direction
+      if (nextIndex < 0 || nextIndex >= sections.length) return
+
+      event.preventDefault()
+      navigationLocked = true
+      window.scrollTo({
+        top: Math.max(0, sections[nextIndex].offsetTop - 72),
+        behavior: 'smooth',
+      })
+
+      unlockTimer = setTimeout(() => {
+        navigationLocked = false
+      }, 850)
+    }
+
+    window.addEventListener('wheel', handleSectionWheel, { passive: false })
+    return () => {
+      window.removeEventListener('wheel', handleSectionWheel)
+      if (unlockTimer) clearTimeout(unlockTimer)
+    }
+  }, [caseStudyIndex, contactOpen])
 
   if (caseStudyIndex >= 0) {
     return (
