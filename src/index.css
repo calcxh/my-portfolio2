@@ -39,6 +39,26 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Keep the hero title visible when browser translation extensions wrap or
+   restyle its text nodes. The solid text is the fallback; the pseudo-element
+   supplies the gradient independently of those injected wrappers. */
+.hero-title__line {
+  position: relative;
+  color: #aebbc6;
+}
+
+.hero-title__line::after {
+  position: absolute;
+  inset: 0;
+  content: attr(data-label);
+  pointer-events: none;
+  color: transparent;
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .contact-button {
   background: linear-gradient(123deg, #18011f 7%, #b600a8 37%, #7621b0 72%, #be4c00 100%);
   box-shadow:

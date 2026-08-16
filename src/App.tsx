@@ -274,21 +274,28 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
             : 'mt-[6.5rem] sm:mt-28 md:mt-[7.75rem]'
         }`}
       >
-        <h1 className="hero-heading w-full text-center font-black uppercase tracking-tight">
+        <h1
+          className="hero-title w-full text-center font-black uppercase tracking-tight"
+          translate="no"
+        >
           <span
+            data-label={language === 'en' ? "Hi, i'm" : '你好，我是'}
             className={
-              language === 'en'
+              `hero-title__line ${language === 'en'
                 ? 'block text-[18vw] leading-[0.82] sm:text-[16vw]'
                 : 'block pt-[0.12em] text-[clamp(4rem,13vw,10rem)] leading-[1.08] tracking-normal'
+              }`
             }
           >
             {language === 'en' ? <>Hi, i&apos;m</> : '你好，我是'}
           </span>
           <span
+            data-label={language === 'en' ? 'Carol' : '薛和'}
             className={
-              language === 'en'
+              `hero-title__line ${language === 'en'
                 ? 'mt-[0.21em] block text-[15.5vw] leading-[0.82] sm:text-[13.5vw]'
                 : 'mt-[0.18em] block text-[clamp(4.5rem,12vw,9rem)] leading-none tracking-[0.08em]'
+              }`
             }
           >
             {language === 'en' ? 'Carol' : '薛和'}

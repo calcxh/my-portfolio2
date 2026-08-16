@@ -122,18 +122,26 @@ export function useMouseTracking(
       if (event.relatedTarget === null) resetTracking()
     }
 
+    const handleDocumentMouseLeave = () => resetTracking()
+
     const handleVisibilityChange = () => {
       if (document.visibilityState !== 'visible') resetTracking()
     }
 
     startListening()
     window.addEventListener('blur', resetTracking)
+    window.addEventListener('pagehide', resetTracking)
+    window.addEventListener('pointercancel', resetTracking)
     window.addEventListener('pointerout', handlePointerOut)
+    document.documentElement.addEventListener('mouseleave', handleDocumentMouseLeave)
     document.addEventListener('visibilitychange', handleVisibilityChange)
 
     return () => {
       window.removeEventListener('blur', resetTracking)
+      window.removeEventListener('pagehide', resetTracking)
+      window.removeEventListener('pointercancel', resetTracking)
       window.removeEventListener('pointerout', handlePointerOut)
+      document.documentElement.removeEventListener('mouseleave', handleDocumentMouseLeave)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
       if (listening) {
         window.removeEventListener('pointermove', handlePointerMove)
