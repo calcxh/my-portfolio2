@@ -1,0 +1,97 @@
+.border-glow-card {
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --edge-sensitivity: 26;
+  --color-sensitivity: calc(var(--edge-sensitivity) + 18);
+  --glow-padding: 28px;
+  --glow-intensity: 0.75;
+  --glow-one: #ffd629;
+  --glow-two: #a855f7;
+  --glow-three: #38bdf8;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-width: 0;
+  border-radius: clamp(28px, 3vw, 44px);
+  background: #0c0c0c;
+  transform: translate3d(0, 0, 0.01px);
+  transition: transform 320ms cubic-bezier(.2,.8,.2,1), filter 320ms ease;
+  will-change: transform;
+}
+
+.border-glow-card:hover {
+  transform: translate3d(0, -9px, 0.01px) scale(1.006);
+  filter: drop-shadow(0 24px 28px rgb(0 0 0 / 42%));
+}
+
+.border-glow-card::before,
+.border-glow-card::after,
+.border-glow-light {
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: opacity 220ms ease-out;
+}
+
+.border-glow-card::before {
+  content: '';
+  inset: 0;
+  z-index: 0;
+  padding: 1.5px;
+  background: conic-gradient(from var(--cursor-angle), transparent 0%, var(--glow-one) 7%, var(--glow-two) 13%, var(--glow-three) 19%, transparent 27%, transparent 100%);
+  opacity: clamp(0, calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity))), 1);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.border-glow-card::after {
+  content: '';
+  inset: 1px;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 52%, rgb(255 214 41 / 9%) 100%);
+  opacity: clamp(0, calc((var(--edge-proximity) - 55) / 45), 0.6);
+  mix-blend-mode: screen;
+}
+
+.border-glow-light {
+  inset: calc(var(--glow-padding) * -1);
+  z-index: -1;
+  opacity: clamp(0, calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity))), 1);
+  background: conic-gradient(from var(--cursor-angle), transparent 0%, color-mix(in srgb, var(--glow-one) 65%, transparent) 5%, color-mix(in srgb, var(--glow-two) 48%, transparent) 10%, color-mix(in srgb, var(--glow-three) 42%, transparent) 15%, transparent 24%, transparent 100%);
+  filter: blur(calc(18px * var(--glow-intensity)));
+  -webkit-mask: radial-gradient(closest-side, transparent 77%, #000 91%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 77%, #000 91%, transparent 100%);
+}
+
+.border-glow-content {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgb(215 226 234 / 18%);
+  border-radius: inherit;
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.border-glow-card:hover .border-glow-content {
+  border-color: rgb(255 214 41 / 52%);
+  box-shadow:
+    0 28px 64px rgb(0 0 0 / 52%),
+    0 10px 24px rgb(0 0 0 / 38%),
+    0 0 24px rgb(255 214 41 / 8%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-glow-card::before,
+  .border-glow-card::after,
+  .border-glow-light,
+  .border-glow-content { transition: none; }
+
+  .border-glow-card,
+  .border-glow-card:hover {
+    transform: none;
+    transition: none;
+  }
+}

@@ -2,6 +2,7 @@ import {
   type CSSProperties,
   type ElementType,
   type PropsWithChildren,
+  type SVGProps,
   createContext,
   useEffect,
   useContext,
@@ -22,12 +23,28 @@ import {
   ArrowUpRight,
   Check,
   Copy,
-  Dribbble,
-  Instagram,
   Linkedin,
   Mail,
   X,
 } from 'lucide-react'
+import BorderGlow from './components/BorderGlow'
+
+function UpworkIcon({ size = 19, ...props }: SVGProps<SVGSVGElement> & { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path d="M3.4 7.2v4.65c0 2.52 1.3 4 3.48 4 2.14 0 3.56-1.5 3.56-4V7.2M10.44 10.2c1.02 3.62 3.15 5.65 6.25 5.65 2.3 0 3.91-1.36 3.91-3.42 0-1.88-1.42-3.23-3.55-3.23-2.15 0-3.6 1.58-3.6 4.05V19" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+function FiverrIcon({ size = 19, ...props }: SVGProps<SVGSVGElement> & { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <circle cx="17.6" cy="5.1" r="1.35" />
+      <path d="M5 9.15h2.05V8.4c0-2.55 1.38-4.05 4.02-4.05h2v2.45h-1.25c-1.05 0-1.55.55-1.55 1.6v.75h6.75v8.2H19V20h-7.1v-2.65h1.9v-5.55h-3.53V20H7.05v-8.2H5V9.15Z" />
+    </svg>
+  )
+}
 import InteractiveAvatar from './components/InteractiveAvatar/Avatar'
 import researchAiToolComparison640 from './assets/research-ai-tool-comparison-640.webp'
 import researchAiToolComparison1223 from './assets/research-ai-tool-comparison-1223.webp'
@@ -101,6 +118,12 @@ import gpuRentalFullCase from './assets/gpu-rental-full-case.webp'
 import teekidsOverview46 from './assets/teekids-overview-46.jpg'
 import teekidsOverview47 from './assets/teekids-overview-47.jpg'
 import playableInteractiveAdsCover from './assets/playable-interactive-ads-cover.webp'
+import playableInteractiveAdsCoverZh from './assets/playable-interactive-ads-cover-zh.jpg'
+import teekidsCoverZh from './assets/teekids-cover-zh.jpg'
+import innerglowCoverZh from './assets/innerglow-cover-zh.jpg'
+import huanzhiCoverZh from './assets/huanzhi-cover-zh.jpg'
+import miaofanCoverZh from './assets/miaofan-cover-zh.jpg'
+import gpuRentalCoverZh from './assets/gpu-rental-cover-zh.jpg'
 import playableProjectOverviewEn from './assets/playable-project-overview-en.webp'
 import playableProjectOverviewZh from './assets/playable-project-overview-zh.webp'
 import playableProblemDiscoveryEn from './assets/playable-problem-discovery-en.webp'
@@ -224,7 +247,7 @@ function CaseStudyButton({ slug }: { slug: string }) {
   return (
     <motion.a
       href={`#/case-study/${slug}`}
-      className="inline-flex items-center gap-2 rounded-full border-2 border-[#D7E2EA] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 sm:px-8 sm:py-3 sm:text-sm md:px-10 md:py-3.5 md:text-base"
+      className="inline-flex items-center gap-2 rounded-full border-2 border-[#D7E2EA] px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[#D7E2EA] transition-colors duration-300 hover:border-[#FFD629] hover:bg-[#FFD629] hover:text-[#0C0C0C] focus-visible:border-[#FFD629] focus-visible:bg-[#FFD629] focus-visible:text-[#0C0C0C] focus-visible:outline-none sm:px-8 sm:py-3 sm:text-sm md:px-10 md:py-3.5 md:text-base"
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
     >
@@ -257,6 +280,39 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
             >
               {label}
             </button>
+          ) : href === '#projects' ? (
+            <div key={label} className="group relative">
+              <a href={href} className="transition-opacity duration-200 hover:opacity-70">
+                {label}
+              </a>
+              <div className="invisible absolute left-1/2 top-full w-[min(88vw,430px)] -translate-x-1/2 pt-5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div className="overflow-hidden rounded-2xl border border-white/15 bg-[#111214]/95 p-2 text-[#D7E2EA] shadow-2xl backdrop-blur-xl">
+                  <p className="border-b border-white/10 px-3 py-2 text-[9px] font-medium uppercase tracking-[0.24em] text-[#D7E2EA]/45 sm:text-[10px]">
+                    {language === 'en' ? 'Selected case studies' : '案例项目'}
+                  </p>
+                  <div className="max-h-[min(68vh,520px)] overflow-y-auto py-1">
+                    {projects.map((project, index) => (
+                      <a
+                        key={project.slug}
+                        href={`#/case-study/${project.slug}`}
+                        className="flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors hover:bg-white/10 focus-visible:bg-white/10 focus-visible:outline-none"
+                      >
+                        <span className="w-7 shrink-0 text-[10px] font-medium tracking-[0.16em] text-[#D7E2EA]/35">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span className="min-w-0 flex-1 text-[11px] font-semibold uppercase leading-tight tracking-[0.08em] sm:text-xs">
+                          {language === 'en' ? project.name : project.nameZh}
+                        </span>
+                        <span className="shrink-0 text-[9px] font-normal tracking-[0.14em] text-[#D7E2EA]/40 sm:text-[10px]">
+                          {project.year}
+                        </span>
+                        <ArrowUpRight size={14} className="shrink-0 opacity-50" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           ) : (
             <a key={label} href={href} className="transition-opacity duration-200 hover:opacity-70">
               {label}
@@ -275,26 +331,28 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
         }`}
       >
         <h1
-          className="hero-title w-full text-center font-black uppercase tracking-tight"
+          className={`hero-title w-full text-center font-black uppercase tracking-tight ${
+            language === 'zh' ? 'hero-title--zh' : ''
+          }`}
           translate="no"
         >
           <span
-            data-label={language === 'en' ? "Hi, i'm" : '你好，我是'}
+            data-label={language === 'en' ? "Hi, i'm" : undefined}
             className={
               `hero-title__line ${language === 'en'
                 ? 'block text-[18vw] leading-[0.82] sm:text-[16vw]'
-                : 'block pt-[0.12em] text-[clamp(4rem,13vw,10rem)] leading-[1.08] tracking-normal'
+                : 'block pt-[0.08em] text-[clamp(5rem,15vw,12rem)] font-black leading-[1.02] tracking-[-0.03em]'
               }`
             }
           >
             {language === 'en' ? <>Hi, i&apos;m</> : '你好，我是'}
           </span>
           <span
-            data-label={language === 'en' ? 'Carol' : '薛和'}
+            data-label={language === 'en' ? 'Carol' : undefined}
             className={
               `hero-title__line ${language === 'en'
                 ? 'mt-[0.21em] block text-[15.5vw] leading-[0.82] sm:text-[13.5vw]'
-                : 'mt-[0.18em] block text-[clamp(4.5rem,12vw,9rem)] leading-none tracking-[0.08em]'
+                : 'mt-[0.14em] block text-[clamp(5rem,14vw,11rem)] font-black leading-none tracking-[0.04em]'
               }`
             }
           >
@@ -470,6 +528,38 @@ const aboutDecor = [
   },
 ]
 
+function AboutDecorItem({
+  item,
+  index,
+  progress,
+}: {
+  item: (typeof aboutDecor)[number]
+  index: number
+  progress: MotionValue<number>
+}) {
+  const reduceMotion = useReducedMotion()
+  const isTopDecor = index === 0 || index === 2
+  const y = useTransform(
+    progress,
+    [0, 0.5, 1],
+    isTopDecor
+      ? [-24, 32, 285 + index * 10]
+      : [-205 - index * 12, 0, 205 + index * 12],
+  )
+  const x = useTransform(progress, [0, 0.5, 1], [item.x * 0.65, 0, item.x * -0.42])
+  const rotate = useTransform(progress, [0, 0.5, 1], [index % 2 === 0 ? -15 : 15, 0, index % 2 === 0 ? 17 : -17])
+  const scale = useTransform(progress, [0, 0.5, 1], [0.82, 1, 1.1])
+
+  return (
+    <motion.div
+      className={`pointer-events-none absolute z-0 ${item.className}`}
+      style={reduceMotion ? undefined : { y, x, rotate, scale }}
+    >
+      <img src={item.src} alt={item.alt} className="h-auto w-full object-contain" loading="lazy" />
+    </motion.div>
+  )
+}
+
 const aboutText =
   '7 years of UI/UX design experience across 20+ B2B tools, AI products, and digital platforms. I specialize in transforming complex business requirements into clear user flows, scalable design systems, and intuitive product experiences, collaborating closely with product, engineering, and AI teams to deliver impactful solutions. Key achievements include improving click-to-download conversion by 2–3x and reducing intelligent video analysis processing time by 40%.'
 const aboutTextZh =
@@ -527,19 +617,21 @@ function AnimatedText({ text }: { text: string }) {
 
 function AboutSection({ onContactClick }: { onContactClick: () => void }) {
   const { language } = useLanguage()
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+
   return (
-    <section id="about" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0C0C0C] px-5 py-24 sm:px-8 md:px-10">
-      {aboutDecor.map((item) => (
-        <FadeIn
+    <section ref={sectionRef} id="about" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0C0C0C] px-5 py-24 sm:px-8 md:px-10">
+      {aboutDecor.map((item, index) => (
+        <AboutDecorItem
           key={item.src}
-          delay={item.delay}
-          x={item.x}
-          y={0}
-          duration={0.9}
-          className={`pointer-events-none absolute z-0 ${item.className}`}
-        >
-          <img src={item.src} alt={item.alt} className="h-auto w-full object-contain" loading="lazy" />
-        </FadeIn>
+          item={item}
+          index={index}
+          progress={scrollYProgress}
+        />
       ))}
 
       <div className="relative z-10 flex flex-col items-center">
@@ -637,6 +729,8 @@ const projects = [
     platform: 'web',
     category: 'Client',
     categoryZh: '客户项目',
+    tags: ['B2B', 'Education', 'AI'],
+    tagsZh: ['B端', '教育', 'AI'],
     images: [
       'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
       'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
@@ -651,7 +745,10 @@ const projects = [
     platform: 'web',
     category: 'Client',
     categoryZh: '公司项目',
+    tags: ['B2B', 'AI', 'Web'],
+    tagsZh: ['B端', 'AI', '网页端'],
     images: [miaofanComicTranslationCover],
+    coverImageZh: miaofanCoverZh,
   },
   {
     name: 'Huanzhi Mini Program Redesign',
@@ -661,7 +758,10 @@ const projects = [
     platform: 'mobile',
     category: 'Client',
     categoryZh: '客户项目',
+    tags: ['Mobile', 'Mobility', 'Redesign'],
+    tagsZh: ['移动端', '出行', '改版'],
     images: [huanzhiMiniProgramRedesignCover],
+    coverImageZh: huanzhiCoverZh,
   },
   {
     name: 'Playable Interactive Ads',
@@ -671,39 +771,51 @@ const projects = [
     platform: 'mobile',
     category: 'Client',
     categoryZh: '公司项目',
+    tags: ['Mobile', 'Advertising', 'Interactive'],
+    tagsZh: ['移动端', '广告', '互动体验'],
     images: [playableInteractiveAdsCover],
+    coverImageZh: playableInteractiveAdsCoverZh,
   },
   {
     name: 'INNERGLOW website desgin',
-    nameZh: 'INNERGLOW website desgin',
+    nameZh: 'INNERGLOW 官网设计',
     slug: 'project-placeholder-04',
     year: '2024',
     platform: 'web',
     category: 'Client',
     categoryZh: '客户项目',
+    tags: ['Web', 'B2C', 'E-commerce'],
+    tagsZh: ['网页端', 'C端', '电商'],
     images: [innerglowOverview42],
+    coverImageZh: innerglowCoverZh,
     overviewImages: [innerglowFullCase],
   },
   {
     name: 'GPU RENTAL APP',
-    nameZh: 'GPU RENTAL APP',
+    nameZh: '显卡租赁APP',
     slug: 'project-placeholder-05',
     year: '2024',
     platform: ['mobile', 'graphic'],
     category: 'Client',
     categoryZh: '公司项目',
+    tags: ['Mobile', 'Fintech', 'Data'],
+    tagsZh: ['移动端', '金融科技', '数据可视化'],
     images: [gpuRentalOverview44],
+    coverImageZh: gpuRentalCoverZh,
     overviewImages: [gpuRentalFullCase],
   },
   {
     name: 'TEEKIDS website desgin',
-    nameZh: 'TEEKIDS website desgin',
+    nameZh: 'TEEKIDS 官网设计',
     slug: 'project-placeholder-06',
     year: '2024',
     platform: 'web',
     category: 'Client',
     categoryZh: '客户项目',
+    tags: ['Web', 'B2C', 'E-commerce'],
+    tagsZh: ['网页端', 'C端', '电商'],
     images: [teekidsOverview46],
+    coverImageZh: teekidsCoverZh,
     overviewImages: [teekidsOverview46, teekidsOverview47],
   },
   {
@@ -714,6 +826,8 @@ const projects = [
     platform: 'web',
     category: 'Client',
     categoryZh: '客户项目',
+    tags: ['Web', 'E-commerce', 'B2C'],
+    tagsZh: ['网页端', '电商', 'C端'],
     images: [particleActiveProjectCard],
     coverImageEn: particleActiveProjectCardEn,
     overviewImages: [
@@ -735,16 +849,21 @@ function ProjectCard({
   const { language } = useLanguage()
   const projectName = language === 'en' ? project.name : project.nameZh
   const projectCoverImage =
-    language === 'en' && 'coverImageEn' in project ? project.coverImageEn : project.images[0]
+    language === 'zh' && 'coverImageZh' in project
+      ? project.coverImageZh
+      : language === 'en' && 'coverImageEn' in project
+        ? project.coverImageEn
+        : project.images[0]
   return (
+    <BorderGlow className="group">
     <motion.article
-      className="group overflow-hidden rounded-[28px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-3 text-[#D7E2EA] sm:rounded-[36px] sm:p-4 lg:rounded-[44px] lg:p-5"
+      className="h-full overflow-hidden rounded-[inherit] bg-[#0C0C0C] p-3 text-[#D7E2EA] sm:p-4 lg:p-5"
       initial={{ opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.7, delay: (index % 2) * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <div className="mb-4 flex min-h-[88px] items-center gap-3 px-1 sm:mb-5 sm:min-h-[100px] sm:gap-4">
+      <div className="mb-4 flex min-h-[118px] items-center gap-3 px-1 sm:mb-5 sm:min-h-[132px] sm:gap-4">
           <div className="min-w-0 flex-1">
             <span className="flex items-center gap-3 text-[10px] font-light uppercase tracking-[0.2em] opacity-60 sm:text-xs">
               <span>{language === 'en' ? project.category : project.categoryZh}</span>
@@ -754,6 +873,16 @@ function ProjectCard({
             <h3 className="mt-2 text-[clamp(1.25rem,2.1vw,2rem)] font-semibold uppercase leading-[1.05]">
               {projectName}
             </h3>
+            <div className="mt-3 flex flex-wrap gap-1.5" aria-label={language === 'en' ? 'Project tags' : '项目标签'}>
+              {(language === 'en' ? project.tags : project.tagsZh).map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-[#D7E2EA]/25 bg-[#D7E2EA]/[0.04] px-3 py-1.5 text-[11px] font-medium uppercase leading-none tracking-[0.1em] text-[#D7E2EA]/75 sm:text-xs"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
           <div className="hidden shrink-0 xl:block">
             <CaseStudyButton slug={project.slug} />
@@ -823,6 +952,7 @@ function ProjectCard({
         <CaseStudyButton slug={project.slug} />
       </div>
     </motion.article>
+    </BorderGlow>
   )
 }
 
@@ -1151,9 +1281,11 @@ const playableInteractiveAdsSections = genericMiaofanPlaceholderSections.map((se
 function CaseStudyPage({
   project,
   index,
+  onContactClick,
 }: {
   project: (typeof projects)[number]
   index: number
+  onContactClick: () => void
 }) {
   const { language } = useLanguage()
   const isMiaofanProject = project.slug === 'aura-brand-identity'
@@ -1212,20 +1344,61 @@ function CaseStudyPage({
 
   return (
     <main className="min-h-screen bg-[#0C0C0C] text-[#D7E2EA]">
-      <header className="flex items-center justify-between px-5 py-6 sm:px-8 md:px-12 md:py-8">
+      <header className="fixed inset-x-0 top-0 z-[80] flex items-center justify-between border-b border-white/10 bg-[#0C0C0C]/90 py-5 pl-5 pr-28 backdrop-blur-xl sm:py-6 sm:pl-8 sm:pr-32 md:pl-12 md:pr-36">
         <a
-          href="#projects"
+          href="#home"
           className="group inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] transition-opacity hover:opacity-65 sm:text-sm"
         >
           <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
-          {language === 'en' ? 'Back to projects' : '返回项目'}
+          {language === 'en' ? 'Back to home' : '回到首页'}
         </a>
+        <nav className="absolute left-1/2 flex -translate-x-1/2 items-center gap-6 text-xs font-medium uppercase tracking-[0.18em] sm:gap-10 sm:text-sm md:gap-14">
+          <div className="group relative">
+            <a href="#projects" className="transition-opacity hover:opacity-65">
+              {language === 'en' ? 'Projects' : '项目'}
+            </a>
+            <div className="invisible absolute left-1/2 top-full w-[min(88vw,430px)] -translate-x-1/2 pt-6 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="overflow-hidden rounded-2xl border border-white/15 bg-[#111214]/95 p-2 text-[#D7E2EA] shadow-2xl backdrop-blur-xl">
+                <p className="border-b border-white/10 px-3 py-2 text-[9px] font-medium uppercase tracking-[0.24em] text-[#D7E2EA]/45 sm:text-[10px]">
+                  {language === 'en' ? 'Selected case studies' : '案例项目'}
+                </p>
+                <div className="max-h-[min(68vh,520px)] overflow-y-auto py-1">
+                  {projects.map((caseProject, caseIndex) => (
+                    <a
+                      key={caseProject.slug}
+                      href={`#/case-study/${caseProject.slug}`}
+                      className={`flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors focus-visible:outline-none ${caseProject.slug === project.slug ? 'bg-[#FFD629] text-[#0C0C0C] hover:bg-[#FFE15C] focus-visible:bg-[#FFE15C]' : 'hover:bg-white/10 focus-visible:bg-white/10'}`}
+                    >
+                      <span className={`w-7 shrink-0 text-[10px] font-medium tracking-[0.16em] ${caseProject.slug === project.slug ? 'text-[#0C0C0C]/55' : 'text-[#D7E2EA]/35'}`}>
+                        {String(caseIndex + 1).padStart(2, '0')}
+                      </span>
+                      <span className="min-w-0 flex-1 text-[11px] font-semibold uppercase leading-tight tracking-[0.08em] sm:text-xs">
+                        {language === 'en' ? caseProject.name : caseProject.nameZh}
+                      </span>
+                      <span className={`shrink-0 text-[9px] font-normal tracking-[0.14em] sm:text-[10px] ${caseProject.slug === project.slug ? 'text-[#0C0C0C]/60' : 'text-[#D7E2EA]/40'}`}>
+                        {caseProject.year}
+                      </span>
+                      <ArrowUpRight size={14} className={`shrink-0 ${caseProject.slug === project.slug ? 'opacity-80' : 'opacity-50'}`} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onContactClick}
+            className="uppercase transition-opacity hover:opacity-65"
+          >
+            {language === 'en' ? 'Contact me' : '联系我'}
+          </button>
+        </nav>
         <span className="text-xs font-light uppercase tracking-[0.22em] text-[#D7E2EA]/50">
           {language === 'en' ? 'Case study' : '案例'} / {String(index + 1).padStart(2, '0')}
         </span>
       </header>
 
-      <section className="px-5 pb-20 pt-10 sm:px-8 md:px-12 md:pb-28 md:pt-16">
+      <section className="px-5 pb-20 pt-32 sm:px-8 sm:pt-36 md:px-12 md:pb-28 md:pt-40">
         <div className="mx-auto max-w-[1600px]">
           <div
             className={
@@ -2563,16 +2736,16 @@ const contactLinks = [
     icon: Linkedin,
   },
   {
-    label: 'Instagram',
-    value: '@carol.design',
-    href: 'https://www.instagram.com/carol.design',
-    icon: Instagram,
+    label: 'Upwork',
+    value: 'upwork.com',
+    href: 'https://www.upwork.com',
+    icon: UpworkIcon,
   },
   {
-    label: 'Dribbble',
-    value: 'dribbble.com/carol-design',
-    href: 'https://dribbble.com/carol-design',
-    icon: Dribbble,
+    label: 'Fiverr',
+    value: 'fiverr.com',
+    href: 'https://www.fiverr.com',
+    icon: FiverrIcon,
   },
 ]
 
@@ -2677,7 +2850,12 @@ function ContactDrawer({ open, onClose }: { open: boolean; onClose: () => void }
               </p>
               <h2
                 id="contact-drawer-title"
-                className="hero-heading text-[clamp(3.4rem,11vw,6.7rem)] font-black uppercase leading-[0.82] tracking-tight"
+                className={language === 'en'
+                  ? 'hero-heading text-[clamp(3.4rem,11vw,6.7rem)] font-black uppercase leading-[0.82] tracking-tight'
+                  : 'pb-2 text-[clamp(4rem,11vw,7rem)] font-black leading-[0.98] tracking-[-0.06em]'}
+                style={language === 'zh' ? {
+                  fontFamily: '"Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif',
+                } : undefined}
               >
                 {language === 'en' ? (
                   <>Let&apos;s<br />connect</>
@@ -2688,7 +2866,7 @@ function ContactDrawer({ open, onClose }: { open: boolean; onClose: () => void }
               <p className="mt-8 max-w-sm text-base font-light leading-relaxed text-[#D7E2EA]/65 sm:text-lg">
                 {language === 'en'
                   ? "I'm always open to discussing product design, AI experiences, and meaningful collaborations."
-                  : '欢迎与我探讨产品设计、AI 体验，以及有意义的合作机会。'}
+                  : '欢迎与我探讨产品设计、AI体验，希望能和您合作~'}
               </p>
             </div>
 
@@ -2838,6 +3016,16 @@ export default function App() {
       })
 
       const direction = event.deltaY > 0 ? 1 : -1
+      const projectsSection = sections[sections.length - 1]
+      const projectsSnapTop = Math.max(0, projectsSection.offsetTop - 72)
+      const isInsideProjects = window.scrollY >= projectsSnapTop - 8
+
+      // Projects can be much taller than the viewport. Preserve normal scrolling
+      // while browsing its cards, and only snap upward after reaching its top edge.
+      if (isInsideProjects) {
+        if (direction > 0 || window.scrollY > projectsSnapTop + 24) return
+      }
+
       const nextIndex = currentIndex + direction
       if (nextIndex < 0 || nextIndex >= sections.length) return
 
@@ -2864,7 +3052,12 @@ export default function App() {
     return (
       <LanguageContext.Provider value={{ language, setLanguage }}>
         <LanguageToggle />
-        <CaseStudyPage project={projects[caseStudyIndex]} index={caseStudyIndex} />
+        <CaseStudyPage
+          project={projects[caseStudyIndex]}
+          index={caseStudyIndex}
+          onContactClick={() => setContactOpen(true)}
+        />
+        <ContactDrawer open={contactOpen} onClose={() => setContactOpen(false)} />
       </LanguageContext.Provider>
     )
   }
