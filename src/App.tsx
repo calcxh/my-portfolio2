@@ -1,6 +1,7 @@
 import {
   type CSSProperties,
   type ElementType,
+  type FormEvent,
   type PropsWithChildren,
   type SVGProps,
   createContext,
@@ -24,6 +25,7 @@ import {
   Check,
   Copy,
   Linkedin,
+  LockKeyhole,
   Mail,
   X,
 } from 'lucide-react'
@@ -167,17 +169,25 @@ function useLanguage() {
   return useContext(LanguageContext)
 }
 
-function LanguageToggle() {
+function LanguageToggle({
+  placement = 'floating',
+}: {
+  placement?: 'floating' | 'case-header' | 'case-floating'
+}) {
   const { language, setLanguage } = useLanguage()
+  const isHeaderToggle = placement === 'case-header'
+  const containerClassName = isHeaderToggle
+    ? 'relative z-auto flex shrink-0 rounded-full border border-white/25 bg-[#111]/90 p-0.5 text-[9px] font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-md sm:p-1 sm:text-[10px] xl:hidden'
+    : `${placement === 'case-floating' ? 'hidden xl:flex' : 'flex'} fixed right-5 top-20 z-[120] rounded-full border border-white/25 bg-[#111]/90 p-1 text-[11px] font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-md sm:right-8 sm:top-24`
 
   return (
-    <div className="fixed right-5 top-20 z-[120] flex rounded-full border border-white/25 bg-[#111]/90 p-1 text-[11px] font-medium uppercase tracking-wider text-white shadow-lg backdrop-blur-md sm:right-8 sm:top-24">
+    <div className={containerClassName}>
       {(['en', 'zh'] as const).map((item) => (
         <button
           key={item}
           type="button"
           onClick={() => setLanguage(item)}
-          className={`rounded-full px-3 py-2 transition-colors ${
+          className={`rounded-full transition-colors ${isHeaderToggle ? 'px-2.5 py-2 sm:px-3' : 'px-3 py-2'} ${
             language === item ? 'bg-[#D7E2EA] text-[#0C0C0C]' : 'text-white/55 hover:text-white'
           }`}
           aria-pressed={language === item}
@@ -229,7 +239,7 @@ function ContactButton({ onClick }: { onClick: () => void }) {
     <motion.button
       type="button"
       onClick={onClick}
-      className="contact-button relative inline-flex shrink-0 overflow-hidden rounded-full px-6 py-3 text-[11px] font-medium uppercase tracking-[0.16em] text-white sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base"
+      className="contact-button hero-contact-button relative inline-flex shrink-0 overflow-hidden rounded-full px-6 py-3 text-[11px] font-medium uppercase tracking-[0.16em] text-white sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base"
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
       aria-haspopup="dialog"
@@ -264,7 +274,7 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
     : [['关于我', '#about'], ['专业能力', '#services'], ['项目', '#projects'], ['联系', '#contact']]
 
   return (
-    <section id="home" className="relative flex h-screen min-h-[620px] w-screen min-w-0 max-w-[100vw] flex-col overflow-x-clip bg-[#0C0C0C] px-5 sm:px-8 md:px-10">
+    <section id="home" className="hero-section relative flex h-screen min-h-[620px] w-screen min-w-0 max-w-[100vw] flex-col overflow-x-clip bg-[#0C0C0C] px-5 sm:px-8 md:px-10">
       <FadeIn
         y={-20}
         as="nav"
@@ -324,7 +334,7 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
       <FadeIn
         delay={0.15}
         y={40}
-        className={`relative z-0 w-full min-w-0 max-w-full overflow-hidden ${
+        className={`hero-title-wrap relative z-0 w-full min-w-0 max-w-full overflow-hidden ${
           language === 'en'
             ? 'mt-[5.5rem] sm:mt-24 md:mt-[6.5rem]'
             : 'mt-[6.5rem] sm:mt-28 md:mt-[7.75rem]'
@@ -361,15 +371,15 @@ function HeroSection({ onContactClick }: { onContactClick: () => void }) {
         </h1>
       </FadeIn>
 
-      <div className="pointer-events-auto absolute bottom-[7rem] left-1/2 z-10 w-[min(50vw,180px)] -translate-x-1/2 sm:bottom-0 sm:w-[min(38vw,340px)] md:w-[min(32vw,420px)] lg:w-[min(30vw,420px)]">
+      <div className="hero-avatar-wrap pointer-events-auto absolute bottom-[7rem] left-1/2 z-10 w-[min(50vw,180px)] -translate-x-1/2 sm:bottom-0 sm:w-[min(38vw,340px)] md:w-[min(32vw,420px)] lg:w-[min(30vw,420px)]">
         <FadeIn delay={0.6} y={30}>
           <InteractiveAvatar />
         </FadeIn>
       </div>
 
-      <div className="relative z-20 mt-auto flex w-full min-w-0 items-end justify-between gap-3 pb-7 sm:pb-8 md:pb-10">
+      <div className="hero-primary-actions relative z-20 mt-5 flex w-full min-w-0 flex-col items-center justify-start gap-4 pb-0 text-center sm:mt-6 sm:gap-5 md:mt-7 lg:mt-auto lg:flex-row lg:items-end lg:justify-between lg:gap-3 lg:pb-10 lg:text-left">
         <FadeIn delay={0.35} y={20}>
-          <p className="max-w-[180px] text-[clamp(.75rem,1.4vw,1.5rem)] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[260px] md:max-w-[360px]">
+          <p className="hero-intro max-w-[540px] text-[clamp(.8rem,1.8vw,1.25rem)] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[600px] lg:max-w-[360px] lg:text-[clamp(.75rem,1.4vw,1.5rem)]">
             {language === 'en'
               ? 'A product designer driven by transforming complex problems into clear and meaningful experiences.'
               : '一名UI/UX设计师，致力于将复杂问题转化为清晰且有意义的产品体验。'}
@@ -699,16 +709,16 @@ function ServicesSection() {
       </FadeIn>
       <div className="mx-auto grid max-w-[1400px] gap-px border border-black/15 bg-black/15 md:grid-cols-2">
         {services.map((service, index) => (
-          <FadeIn key={service.name} delay={index * 0.1} className="h-full bg-white">
+          <FadeIn key={service.name} delay={index * 0.1} className="capability-card h-full bg-white">
             <article className="grid h-full grid-cols-[64px_1fr] gap-4 p-6 sm:grid-cols-[88px_1fr] sm:gap-6 sm:p-8 lg:p-10">
-              <span className="text-[clamp(2.5rem,5vw,5rem)] font-black leading-[0.82] tracking-tight text-[#0C0C0C]/25">
+              <span className="capability-card__number text-[clamp(2.5rem,5vw,5rem)] font-black leading-[0.82] tracking-tight text-[#0C0C0C]/25">
                 {String(index + 1).padStart(2, '0')}
               </span>
               <div className="pt-1">
-                <h3 className="text-[clamp(1rem,1.8vw,1.7rem)] font-medium uppercase leading-tight text-[#0C0C0C]">
+                <h3 className="capability-card__title text-[clamp(1rem,1.8vw,1.7rem)] font-medium uppercase leading-tight text-[#0C0C0C]">
                   {language === 'en' ? service.name : service.nameZh}
                 </h3>
-                <p className="mt-4 max-w-2xl text-[clamp(.82rem,1.2vw,1.05rem)] font-light leading-relaxed text-[#0C0C0C]/60">
+                <p className="capability-card__copy mt-4 max-w-2xl text-[clamp(.82rem,1.2vw,1.05rem)] font-light leading-relaxed text-[#0C0C0C]/60">
                   {language === 'en' ? service.description : service.descriptionZh}
                 </p>
               </div>
@@ -1302,6 +1312,8 @@ function CaseStudyPage({
   const sections =
     isMiaofanProject
       ? miaofanCaseStudySections
+      : isHuanzhiPlaceholder
+        ? huanzhiPlaceholderSections.filter(({ id }) => id !== 'research')
       : isFullMiaofanPlaceholder
         ? playableInteractiveAdsSections
       : isGenericPlaceholder
@@ -1338,47 +1350,66 @@ function CaseStudyPage({
     return () => observer.disconnect()
   }, [project.slug])
 
+  useEffect(() => {
+    const preventImageSaveShortcut = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') {
+        event.preventDefault()
+      }
+    }
+
+    window.addEventListener('keydown', preventImageSaveShortcut)
+    return () => window.removeEventListener('keydown', preventImageSaveShortcut)
+  }, [])
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
-    <main className="min-h-screen bg-[#0C0C0C] text-[#D7E2EA]">
-      <header className="fixed inset-x-0 top-0 z-[80] flex items-center justify-between border-b border-white/10 bg-[#0C0C0C]/90 py-5 pl-5 pr-28 backdrop-blur-xl sm:py-6 sm:pl-8 sm:pr-32 md:pl-12 md:pr-36">
+    <main
+      className="case-study-protected min-h-screen bg-[#0C0C0C] text-[#D7E2EA]"
+      onContextMenuCapture={(event) => {
+        if ((event.target as HTMLElement).closest('img')) event.preventDefault()
+      }}
+      onDragStartCapture={(event) => {
+        if ((event.target as HTMLElement).closest('img')) event.preventDefault()
+      }}
+    >
+      <header className="fixed inset-x-0 top-0 z-[80] grid h-16 grid-cols-[40px_minmax(0,1fr)_auto] items-center gap-3 border-b border-white/10 bg-[#0C0C0C]/90 px-5 backdrop-blur-xl sm:h-[76px] sm:px-8 md:px-12 xl:flex xl:justify-between">
         <a
           href="#home"
-          className="group inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] transition-opacity hover:opacity-65 sm:text-sm"
+          aria-label={language === 'en' ? 'Back to home' : '回到首页'}
+          title={language === 'en' ? 'Back to home' : '回到首页'}
+          className="group inline-flex h-10 w-10 items-center justify-center rounded-full text-xs font-medium uppercase tracking-[0.2em] transition-colors hover:bg-white/10 sm:text-sm xl:h-auto xl:w-auto xl:justify-start xl:gap-3 xl:rounded-none xl:hover:bg-transparent xl:hover:opacity-65"
         >
           <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
-          {language === 'en' ? 'Back to home' : '回到首页'}
+          <span className="hidden xl:inline">
+            {language === 'en' ? 'Back to home' : '回到首页'}
+          </span>
         </a>
-        <nav className="absolute left-1/2 flex -translate-x-1/2 items-center gap-6 text-xs font-medium uppercase tracking-[0.18em] sm:gap-10 sm:text-sm md:gap-14">
+        <nav className="flex min-w-0 items-center justify-center gap-8 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.16em] sm:gap-16 sm:text-sm sm:tracking-[0.18em] md:gap-20 xl:absolute xl:left-1/2 xl:-translate-x-1/2">
           <div className="group relative">
             <a href="#projects" className="transition-opacity hover:opacity-65">
               {language === 'en' ? 'Projects' : '项目'}
             </a>
-            <div className="invisible absolute left-1/2 top-full w-[min(88vw,430px)] -translate-x-1/2 pt-6 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              <div className="overflow-hidden rounded-2xl border border-white/15 bg-[#111214]/95 p-2 text-[#D7E2EA] shadow-2xl backdrop-blur-xl">
+            <div className="invisible fixed inset-x-4 top-16 z-[95] pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 sm:inset-x-8 sm:top-[76px] xl:absolute xl:inset-x-auto xl:left-1/2 xl:top-full xl:w-[min(88vw,430px)] xl:-translate-x-1/2 xl:pt-6">
+              <div className="overflow-hidden rounded-[20px] border border-white/15 bg-[#111214]/95 p-2 text-[#D7E2EA] shadow-2xl backdrop-blur-xl xl:rounded-2xl">
                 <p className="border-b border-white/10 px-3 py-2 text-[9px] font-medium uppercase tracking-[0.24em] text-[#D7E2EA]/45 sm:text-[10px]">
                   {language === 'en' ? 'Selected case studies' : '案例项目'}
                 </p>
-                <div className="max-h-[min(68vh,520px)] overflow-y-auto py-1">
+                <div className="case-study-project-menu max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain py-1 sm:max-h-[calc(100dvh-8rem)] xl:max-h-[min(68vh,520px)]">
                   {projects.map((caseProject, caseIndex) => (
                     <a
                       key={caseProject.slug}
                       href={`#/case-study/${caseProject.slug}`}
-                      className={`flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors focus-visible:outline-none ${caseProject.slug === project.slug ? 'bg-[#FFD629] text-[#0C0C0C] hover:bg-[#FFE15C] focus-visible:bg-[#FFE15C]' : 'hover:bg-white/10 focus-visible:bg-white/10'}`}
+                      className={`flex min-h-14 items-center gap-2 rounded-xl px-3 py-3.5 text-left transition-colors focus-visible:outline-none sm:gap-3 ${caseProject.slug === project.slug ? 'bg-[#FFD629] text-[#0C0C0C] hover:bg-[#FFE15C] focus-visible:bg-[#FFE15C]' : 'hover:bg-white/10 focus-visible:bg-white/10'}`}
                     >
-                      <span className={`w-7 shrink-0 text-[10px] font-medium tracking-[0.16em] ${caseProject.slug === project.slug ? 'text-[#0C0C0C]/55' : 'text-[#D7E2EA]/35'}`}>
+                      <span className={`hidden w-7 shrink-0 text-[10px] font-medium tracking-[0.16em] sm:inline ${caseProject.slug === project.slug ? 'text-[#0C0C0C]/55' : 'text-[#D7E2EA]/35'}`}>
                         {String(caseIndex + 1).padStart(2, '0')}
                       </span>
-                      <span className="min-w-0 flex-1 text-[11px] font-semibold uppercase leading-tight tracking-[0.08em] sm:text-xs">
+                      <span className="min-w-0 flex-1 text-[13px] font-semibold uppercase leading-snug tracking-[0.045em] sm:text-sm sm:tracking-[0.06em]">
                         {language === 'en' ? caseProject.name : caseProject.nameZh}
                       </span>
-                      <span className={`shrink-0 text-[9px] font-normal tracking-[0.14em] sm:text-[10px] ${caseProject.slug === project.slug ? 'text-[#0C0C0C]/60' : 'text-[#D7E2EA]/40'}`}>
-                        {caseProject.year}
-                      </span>
-                      <ArrowUpRight size={14} className={`shrink-0 ${caseProject.slug === project.slug ? 'opacity-80' : 'opacity-50'}`} />
                     </a>
                   ))}
                 </div>
@@ -1393,12 +1424,10 @@ function CaseStudyPage({
             {language === 'en' ? 'Contact me' : '联系我'}
           </button>
         </nav>
-        <span className="text-xs font-light uppercase tracking-[0.22em] text-[#D7E2EA]/50">
-          {language === 'en' ? 'Case study' : '案例'} / {String(index + 1).padStart(2, '0')}
-        </span>
+        <LanguageToggle placement="case-header" />
       </header>
 
-      <section className="px-5 pb-20 pt-32 sm:px-8 sm:pt-36 md:px-12 md:pb-28 md:pt-40">
+      <section className="case-study-hero px-5 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-32 md:px-12 md:pb-28 md:pt-40">
         <div className="mx-auto max-w-[1600px]">
           <div
             className={
@@ -1412,11 +1441,11 @@ function CaseStudyPage({
                 {language === 'en' ? `${project.category} project` : project.categoryZh}
               </p>
               <h1
-                className={`hero-heading max-w-6xl font-black uppercase tracking-tight ${
+                className={`case-study-hero-title hero-heading max-w-6xl font-black uppercase tracking-tight ${
                   language === 'zh' ? 'pb-[0.08em] leading-[1.06]' : 'leading-[0.82]'
                 } ${
                   project.slug === 'nextlevel-studio'
-                    ? 'text-[clamp(3.2rem,7vw,7.5rem)]'
+                    ? 'text-[clamp(2.7rem,10vw,6rem)] md:text-[clamp(3.2rem,7vw,7.5rem)]'
                     : usesMiaofanLayout
                       ? 'text-[clamp(2.8rem,7vw,7.5rem)]'
                       : 'text-[clamp(3.6rem,10vw,10rem)]'
@@ -1424,15 +1453,28 @@ function CaseStudyPage({
               >
                 {project.slug === 'nextlevel-studio' ? (
                   <>
-                    <span className="block whitespace-nowrap">{language === 'en' ? 'Aero.ai Course' : 'Aero.ai 课程'}</span>
-                    <span className="block whitespace-nowrap">{language === 'en' ? 'Authoring System' : '创作系统'}</span>
+                    <span className="block whitespace-normal md:whitespace-nowrap">{language === 'en' ? 'Aero.ai Course' : 'Aero.ai 课程'}</span>
+                    <span className="block whitespace-normal md:whitespace-nowrap">{language === 'en' ? 'Authoring System' : '创作系统'}</span>
                   </>
                 ) : (
                   projectName
                 )}
               </h1>
+              <div className="mt-7 flex flex-wrap gap-2 md:hidden" aria-label={language === 'en' ? 'Project details' : '项目信息'}>
+                {(language === 'en' ? project.tags : project.tagsZh).map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[#D7E2EA]/20 bg-[#D7E2EA]/[0.045] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[#D7E2EA]/65"
+                  >
+                    {tag}
+                  </span>
+                ))}
+                <span className="rounded-full border border-[#D7E2EA]/20 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[#D7E2EA]/45">
+                  {project.platform}
+                </span>
+              </div>
             </div>
-            <span className="shrink-0 text-[clamp(4rem,9vw,8rem)] font-black leading-none text-[#D7E2EA]/15">
+            <span className="hidden shrink-0 text-[clamp(4rem,9vw,8rem)] font-black leading-none text-[#D7E2EA]/15 md:block">
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
@@ -1454,7 +1496,7 @@ function CaseStudyPage({
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-[1600px] gap-10 px-5 pb-32 sm:px-8 lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-16 lg:px-12">
+      <div className="case-study-layout mx-auto grid max-w-[1600px] gap-10 px-5 pb-24 sm:px-8 sm:pb-32 lg:grid-cols-[250px_minmax(0,1fr)] lg:gap-16 lg:px-12">
         <aside className="hidden self-start lg:sticky lg:top-8 lg:block">
           <p className="mb-8 text-[10px] font-medium uppercase tracking-[0.28em] text-[#D7E2EA]/40">
             {language === 'en' ? 'Project index' : '项目目录'}
@@ -1500,14 +1542,14 @@ function CaseStudyPage({
         </aside>
 
         <div className="min-w-0">
-          <div className="sticky top-0 z-20 -mx-5 mb-8 overflow-x-auto border-y border-[#D7E2EA]/15 bg-[#0C0C0C]/95 px-5 py-4 backdrop-blur lg:hidden">
+          <div className="case-study-mobile-tabs sticky top-16 z-[70] -mx-5 mb-10 overflow-x-auto border-y border-[#D7E2EA]/15 bg-[#0C0C0C]/95 px-5 py-3 shadow-[0_12px_30px_rgba(0,0,0,.28)] backdrop-blur sm:top-[76px] lg:hidden">
             <div className="flex w-max gap-2">
               {sections.map(({ id, label }) => (
                 <button
                   key={id}
                   type="button"
                   onClick={() => scrollToSection(id)}
-                  className={`rounded-full border px-4 py-2 text-[10px] font-medium uppercase tracking-[0.14em] transition-colors ${
+                  className={`min-h-11 rounded-full border px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] transition-colors ${
                     activeSection === id
                       ? 'border-[#D7E2EA] bg-[#D7E2EA] text-[#0C0C0C]'
                       : 'border-[#D7E2EA]/20 text-[#D7E2EA]/50'
@@ -1576,7 +1618,7 @@ function CaseStudyPage({
               <section
                 key={section.id}
                 id={section.id}
-                className="scroll-mt-24 border-t border-[#D7E2EA]/15 py-16 first:border-t-0 first:pt-0 sm:py-20 md:py-24"
+                className="case-study-section scroll-mt-[160px] border-t border-[#D7E2EA]/15 py-12 first:border-t-0 first:pt-0 sm:py-20 md:py-24 lg:scroll-mt-24"
               >
                 {isMiaofanBidirectionalCanvas && (
                   <div className="mb-14 flex items-end justify-between gap-6 sm:mb-20">
@@ -1602,7 +1644,7 @@ function CaseStudyPage({
                       /{String(sectionIndex + 1).padStart(2, '0')}
                     </span>
                   )}
-                  <div className="pr-20">
+                  <div className="case-study-section-heading pr-20">
                     <h2
                       className={
                         isMiaofanBidirectionalCanvas
@@ -1613,7 +1655,7 @@ function CaseStudyPage({
                       {language === 'en' ? section.label : section.labelZh}
                     </h2>
                     {(language === 'en' ? section.description : section.descriptionZh) && (
-                      <p className="mt-5 max-w-3xl whitespace-pre-line text-base font-light leading-relaxed text-[#D7E2EA]/55 sm:text-lg">
+                      <p className="case-study-section-description mt-5 max-w-3xl whitespace-pre-line text-base font-light leading-relaxed text-[#D7E2EA]/55 sm:text-lg">
                         {language === 'en' ? section.description : section.descriptionZh}
                       </p>
                     )}
@@ -2737,14 +2779,14 @@ const contactLinks = [
   },
   {
     label: 'Upwork',
-    value: 'upwork.com',
-    href: 'https://www.upwork.com',
+    value: 'upwork.com/freelancers/~01093da41aadf838ff',
+    href: 'https://www.upwork.com/freelancers/~01093da41aadf838ff?mp_source=share',
     icon: UpworkIcon,
   },
   {
     label: 'Fiverr',
-    value: 'fiverr.com',
-    href: 'https://www.fiverr.com',
+    value: 'fiverr.com/s/xrdXQ3a',
+    href: 'https://www.fiverr.com/s/xrdXQ3a',
     icon: FiverrIcon,
   },
 ]
@@ -2956,10 +2998,101 @@ function ContactDrawer({ open, onClose }: { open: boolean; onClose: () => void }
   )
 }
 
+function CasePasswordGate({
+  onUnlock,
+  onBack,
+}: {
+  onUnlock: () => void
+  onBack: () => void
+}) {
+  const { language } = useLanguage()
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (password === '123456') {
+      window.sessionStorage.setItem('portfolio-case-access', 'granted')
+      setError(false)
+      onUnlock()
+      return
+    }
+    setError(true)
+  }
+
+  return (
+    <main className="fixed inset-0 z-[200] flex min-h-screen items-center justify-center bg-black/70 px-5 text-[#D7E2EA] backdrop-blur-[6px]">
+      <motion.div
+        initial={{ opacity: 0, y: 22, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        className="w-full max-w-md rounded-[32px] border border-white/15 bg-[#111214] p-7 shadow-[0_30px_100px_rgba(0,0,0,.65)] sm:p-10"
+      >
+        <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-full border border-[#FFD629]/45 bg-[#FFD629]/10 text-[#FFD629]">
+          <LockKeyhole size={24} />
+        </div>
+        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#D7E2EA]/45">
+          {language === 'en' ? 'Protected case study' : '案例已上锁'}
+        </p>
+        <h1 className="mt-4 text-3xl font-black uppercase leading-tight sm:text-4xl">
+          {language === 'en' ? 'Enter password' : '请输入访问密码'}
+        </h1>
+        <p className="mt-4 text-sm leading-relaxed text-[#D7E2EA]/55">
+          {language === 'en'
+            ? 'This case study is password protected. Enter the password to continue.'
+            : '该案例设有访问保护，请输入密码后继续浏览。'}
+        </p>
+
+        <form onSubmit={handleSubmit} className="mt-8">
+          <label htmlFor="case-password" className="sr-only">
+            {language === 'en' ? 'Password' : '密码'}
+          </label>
+          <input
+            id="case-password"
+            type="password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value)
+              if (error) setError(false)
+            }}
+            autoFocus
+            autoComplete="current-password"
+            placeholder={language === 'en' ? 'Password' : '请输入密码'}
+            aria-invalid={error}
+            className={`h-14 w-full rounded-2xl border bg-black/25 px-5 text-base outline-none transition-colors placeholder:text-[#D7E2EA]/25 ${
+              error
+                ? 'border-red-400 focus:border-red-400'
+                : 'border-white/15 focus:border-[#FFD629]'
+            }`}
+          />
+          <div className="mt-2 min-h-5 text-xs text-red-400" role="alert">
+            {error ? (language === 'en' ? 'Incorrect password. Please try again.' : '密码错误，请重新输入。') : ''}
+          </div>
+          <button
+            type="submit"
+            className="mt-4 h-14 w-full rounded-full bg-[#FFD629] text-sm font-bold uppercase tracking-[0.18em] text-[#0C0C0C] transition-transform hover:-translate-y-1 active:translate-y-0"
+          >
+            {language === 'en' ? 'Unlock case' : '解锁案例'}
+          </button>
+          <button
+            type="button"
+            onClick={onBack}
+            className="mt-4 w-full py-3 text-xs font-medium uppercase tracking-[0.18em] text-[#D7E2EA]/50 transition-colors hover:text-[#D7E2EA]"
+          >
+            {language === 'en' ? 'Back to projects' : '返回项目列表'}
+          </button>
+        </form>
+      </motion.div>
+    </main>
+  )
+}
+
 export default function App() {
   const wrapperStyle: CSSProperties = { overflowX: 'clip' }
   const [contactOpen, setContactOpen] = useState(false)
   const [route, setRoute] = useState(window.location.hash)
+  const [caseAccessGranted, setCaseAccessGranted] = useState(
+    () => window.sessionStorage.getItem('portfolio-case-access') === 'granted',
+  )
   const [language, setLanguage] = useState<Language>(() => {
     const saved = window.localStorage.getItem('portfolio-language')
     return saved === 'zh' ? 'zh' : 'en'
@@ -3051,13 +3184,21 @@ export default function App() {
   if (caseStudyIndex >= 0) {
     return (
       <LanguageContext.Provider value={{ language, setLanguage }}>
-        <LanguageToggle />
+        <LanguageToggle placement="case-floating" />
         <CaseStudyPage
           project={projects[caseStudyIndex]}
           index={caseStudyIndex}
           onContactClick={() => setContactOpen(true)}
         />
         <ContactDrawer open={contactOpen} onClose={() => setContactOpen(false)} />
+        {!caseAccessGranted && (
+          <CasePasswordGate
+            onUnlock={() => setCaseAccessGranted(true)}
+            onBack={() => {
+              window.location.hash = '#projects'
+            }}
+          />
+        )}
       </LanguageContext.Provider>
     )
   }
